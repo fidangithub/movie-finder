@@ -1,0 +1,30 @@
+.Sidebar {
+  position: sticky;
+  padding: 6rem 0.5rem 0rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  min-width: max-content;
+  /* top: 0rem;
+  bottom: 0rem; */
+  width: 2rem;
+  background-color: white;
+  transition: all .2s ease;
+}
+
+.Sidebar > * {
+  margin-bottom: 1rem;
+}
+.XIcon{
+  display:none;
+  cursor: pointer;
+  position: absolute;
+  top:0;
+  right:0;
+  margin: 1rem;
+  font-size: 1.4rem;
+  color: var(--main-color-3);
+}
+.SidebarOpen {
+  transition: all .2s ease;
+  border-right: 1px solid rgba(0, 0, 0, 0.18);
+}

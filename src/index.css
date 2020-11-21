@@ -1,0 +1,24 @@
+:root {
+  --main-font: 'Poppins', sans-serif;
+  --main-color-1: #f2f2f2;
+  --main-color-2: #788292;
+  /* --main-color-2: rgba(0, 27, 38, 0.86); */
+  /* --main-color-2: #8ea1a5; */
+  --main-color-3:#023447;
+  --main-color-4: #0a353f;
+  --main-color-5: #001b26;
+  --main-color-6: #132D33;
+  --main-color-7: #FFC700;
+  --main-color-white: #fff;
+}
+*,
+*::before,
+*::after{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: var(--main-font);
+  overflow-x: hidden;
+}

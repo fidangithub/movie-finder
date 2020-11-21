@@ -1,0 +1,173 @@
+.SwitchButton {
+  display: flex;
+  align-items: center;
+  color: #132D33;
+  transform: scale(0.8);
+  width: 8rem;
+}
+.MTInput[type='checkbox'] {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+.MTLabel {
+  cursor: pointer;
+  text-indent: -9999px;
+  width: 50px;
+  height: 25px;
+  display: block;
+  border-radius: 25px;
+  position: relative;
+  background: var(--main-color-3);
+  transition-delay: 0.3s;
+  margin-right: 3px;
+}
+.MTLabel:after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 21px;
+  height: 21px;
+  background: #fff;
+  border-radius: 21px;
+  animation: expand-left 0.3s linear forwards;
+}
+.MTInput:checked ~ .MTLabel {
+  background: var(--main-color-2);
+}
+.MTInput:checked + .p {
+  display: none;
+}
+.Tv,
+.Movie {
+  font-size: 1.4rem;
+  transition-delay: 0.3s;
+  transition: color 1s ease-out;
+}
+.Movie {
+  color: var(--main-color-3);
+}
+.Tv {
+  color: var(--main-color-2);
+  display: none;
+}
+.MTInput:checked ~ .Tv {
+  display: block;
+}
+.MTInput:checked ~ .Movie {
+  display: none;
+}
+.MTInput:checked + .MTLabel:after {
+  animation: expand-right 0.3s linear forwards;
+}
+@-webkit-keyframes expand-right {
+  0% {
+    left: 2px;
+    /* background:white; */
+  }
+  30%,50%    /* 50% 80% */
+ {
+    left: 2px;
+    width: 46px;
+  }
+
+  60% {
+    left: 34px;
+    width: 14px;
+  }
+  80% {
+    left: 24px;
+    width: 24px;
+  }
+  90% { 
+    left: 29px;
+    width: 19px;
+  }
+  100% {
+    left: 27px;
+    width: 21px;
+  }
+}
+@keyframes expand-right {
+  0% {
+    left: 2px;
+    /* background:white; */
+  }
+  30%,50%    /* 50% 80% */
+ {
+    left: 2px;
+    width: 46px;
+  }
+
+  60% {
+    left: 34px;
+    width: 14px;
+  }
+  80% {
+    left: 24px;
+    width: 24px;
+  }
+  90% {
+    left: 29px;
+    width: 19px;
+  }
+  100% {
+    left: 27px;
+    width: 21px;
+  }
+}
+@-webkit-keyframes expand-left {
+  0% {
+    left: 27px;
+    /* background:white; */
+  }
+  30%,
+  50% {
+    left: 2px;
+    width: 46px;
+  }
+  60% {
+    right: 34px;
+    width: 14px;
+  }
+  80% {
+    right: 24px;
+    width: 24px;
+  }
+  90% {
+    right: 29px;
+    width: 19px;
+  }
+  100% {
+    left: 2px;
+    width: 21px;
+  }
+}
+@keyframes expand-left {
+  0% {
+    left: 27px;
+    /* background:white; */
+  }
+  30%,
+  50% {
+    left: 2px;
+    width: 46px;
+  }
+  60% {
+    right: 34px;
+    width: 14px;
+  }
+  80% {
+    right: 24px;
+    width: 24px;
+  }
+  90% {
+    right: 29px;
+    width: 19px;
+  }
+  100% {
+    left: 2px;
+    width: 21px;
+  }
+}

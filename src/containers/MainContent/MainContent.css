@@ -1,0 +1,7 @@
+.MainContent {
+  width: 100%;
+  position: relative;
+  background-color: white;
+  transition: all .2s ease-in;
+  padding-left: 1rem;
+}

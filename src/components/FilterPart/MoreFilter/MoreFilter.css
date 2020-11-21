@@ -1,0 +1,11 @@
+.MoreFilter {
+  transition: all 1s ease;
+}
+.MoreFilter > p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  color: var(--main-color-3);
+}
+.MoreFilterSections {
+  color: var(--main-color-2);
+}

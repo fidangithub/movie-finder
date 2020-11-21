@@ -1,0 +1,48 @@
+.DiscoverSection {
+  width: 70%;
+  /* height: 1rem; */
+  /* margin: 0.5rem 0; */
+  padding: 0.4rem 0.2rem 0.4rem 0.6rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  backface-visibility: hidden;
+  border: 1px solid transparent;
+  border-radius: 50px;
+  text-decoration: none; 
+  color: inherit;
+}
+.Fidan{
+  background-color: var(--main-color-1);
+  width: 120%;
+  margin-left: -20%;
+  color: var(--main-color-3);
+  font-weight: 600;
+}
+.Fidan > svg{
+  margin-left: 17.5%;
+  color: var(--main-color-3);
+}
+.Fidan:hover{
+  background-color: var(--main-color-1) !important;
+}
+.DiscoverSection:hover {
+  background-color: #fbfbfb;
+  width: 120%;
+  margin-left: -20%;
+}
+.DiscoverSection:hover > .DiscoverIcon {
+  margin-left: 17.5%;
+}
+.DiscoverIcon{
+  color: var(--main-color-2);
+  width: 0.9rem !important;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  margin-right: 0.8rem;
+}
+.DiscoverSection > p {
+  font-size: 0.8rem;
+}

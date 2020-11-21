@@ -1,0 +1,6 @@
+.FilterPart {
+  margin: 0rem 1rem 0rem 1rem;
+  cursor: pointer;
+  transition: all .2s ease ;
+  position: relative;
+}

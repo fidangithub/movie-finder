@@ -1,0 +1,83 @@
+.RightFilters {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  color: #001b26;
+  margin: 2rem 0 2rem 0rem;
+  height: 3rem;
+}
+.FiltersContainer {
+  position: absolute;
+  overflow: hidden;
+  width: 96%;
+  display: flex;
+  align-items: center;
+  overflow-x: scroll;
+}
+.FiltersContainer::-webkit-scrollbar {
+  height: 0px;
+}
+
+.Filters {
+  display: flex;
+  transition: all 0.2s ease-out;
+  transform: translateX(0);
+}
+.Arrow {
+  visibility: hidden;
+  z-index: 4;
+  fill: var(--main-color-6);
+  width: 1rem;
+  height: 1rem;
+  cursor: pointer;
+  opacity: 0.6;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.ArrowIcon:hover {
+  opacity: 1;
+}
+.RLIcon {
+  position: absolute;
+  width: 100%;
+  height: max-content;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.RightFilter {
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: max-content;
+  height: 2rem;
+  padding: 1rem;
+  margin-right: 0.4rem;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+  background-color: var(--main-color-3);
+}
+.RightFilterText {
+  min-width: max-content;
+  height: max-content;
+  font-size: 0.9rem;
+  margin-top: 0.2rem;
+  color: white;
+  padding-right: 0.3rem;
+}
+.XIcon {
+  color: white;
+  position: absolute;
+  width: 0.8rem !important;
+  font-size: 0.8rem;
+  transition: all 0.2s ease-out;
+  top: 0.15rem;
+  right: 0.4rem;
+}
+.Active{
+  visibility: visible !important;
+}

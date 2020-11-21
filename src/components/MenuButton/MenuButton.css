@@ -1,0 +1,33 @@
+.Menu{
+  box-sizing: border-box;
+  z-index:5;
+  position: absolute;
+  width: 3rem;
+  height: 3rem;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin: .6rem 1rem;
+  border: none;
+}
+.Menu:focus, .Menu:active{
+  outline: none;
+}
+.Menu:active{
+  animation: scaleRound 2s ease;
+}
+@keyframes scaleRound {
+  0% {
+    background-color: white;
+  }
+  100% {
+    background-color: rgb(114, 112, 112);
+  }
+}
+.MenuIcon{
+  font-size: 1.4rem;
+  color: var(--main-color-3);
+} 

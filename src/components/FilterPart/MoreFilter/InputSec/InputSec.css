@@ -1,0 +1,64 @@
+.InputSection{
+  width: 100%;
+  margin: 0.5rem 0;
+  cursor: pointer;
+  backface-visibility: hidden;
+  border-radius: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid transparent;
+  padding: 0.2rem 0.2rem 0.2rem 0.6rem;
+  transition: all 0.2s ease-out;
+}
+.UserPlusIcon {
+  color: var(--main-color-2);
+  width: 1rem !important;
+  font-size: 1rem;
+  margin-right: 0.8rem;
+}
+.Input {
+  width: 100%;
+  border: none;
+}
+input[type='text'].Input {
+  color: var(--main-color-6);
+  font-size: 0.8rem;
+  font-family: var(--main-font);
+  background-color: transparent;
+}
+input.Input::-webkit-input-placeholder {
+  font-size: 0.8rem;
+  font-family: var(--main-font);
+  color: var(--main-color-2);
+}
+.Input:focus {
+  outline: none;
+}
+.Input:focus + .InputSection {
+  border: 1px solid var(--main-color-6);
+  border-radius: 50px;
+}
+.PlusIcon {
+  color: var(--main-color-2);
+  width: .9rem !important;
+  font-size: .9rem;
+  transition: all 0.2s ease-out;
+}
+.InputSection:hover > .PlusIcon {
+  color: var(--main-color-3);
+}
+.InputCaption {
+  width: 13rem;
+  display: flex;
+}
+.InputCaption:hover > .UserPlusIcon {
+  color: var(--main-color-3);
+}
+.Active{
+  border: 1px solid var(--main-color-2);
+  border-radius: 5px;
+}
+.ActiveIcon{
+  color: var(--main-color-3) !important;
+}

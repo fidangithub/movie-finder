@@ -1,0 +1,13 @@
+.Discover {
+  transition: all 1s ease;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+.Discover >p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  color: var(--main-color-3);
+}
+.DiscoverSections {
+  color: var(--main-color-2);
+}
