@@ -4,7 +4,7 @@ import classes from "./RightFilters.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+import {Redirect, withRouter } from "react-router-dom";
 import * as actions from "./../../store/actions/index"
 
 const rightFilters = (props) => {
@@ -15,16 +15,78 @@ const rightFilters = (props) => {
     const filtersRef = useRef();
     const rightRef = useRef();
 
-    // useEffect(() => {
-    //     //push genre filter to the URL
-    //     let genreIds = props.genres.map(genre => genre.id).join(",");
-    //     console.log(genreIds);
-    //     props.history.push({
-    //         pathname: '/filter',
-    //         search: `?genres=${genreIds}?keys=${props.keys}?people=${props.people}`
-    //     })
-    // }, [props.genres, props.keys, props.people, props.imdb, props.year]);
+    //ADD AND DELETE URL PARAMS WHEN RIGHT FILTER CHANGES
+    let queryParams = new URLSearchParams(window.location.search);
+    console.log(props.year)
+    useEffect(()=>{
+        if(props.genres.length !== 0){
+            let genreIds = props.genres.map(genre => genre.id);
+            queryParams.set("genres", `${genreIds.join(",")}`);
+        }else{
+            queryParams.delete("genres");
+        }
+        props.history.push({
+            pathname: '/filter',
+            search: `?${queryParams.toString()}`
+        });
+    }, [props.genres]); 
+    useEffect(()=>{
+        if(props.imdb.length !== 0) {
+            queryParams.set("minImdb", `${props.imdb[0]}`);
+            queryParams.set("maxImdb", `${props.imdb[1]}`);
+        }else{
+            queryParams.delete("minImdb");
+            queryParams.delete("maxImdb");
+        }
+        props.history.push({
+            pathname: '/filter',
+            search: `?${queryParams.toString()}`
+        })
+    }, [props.imdb]); 
+    useEffect(()=>{
+        if(props.year.length !== 0) {
+            queryParams.set("yearType", `${props.year[0]}`);
+            queryParams.set("year", `${props.year[1]}`);
+        }else{
+            queryParams.delete("yearType");
+            queryParams.delete("year");
+        }
+        props.history.push({
+            pathname: '/filter',
+            search: `?${queryParams.toString()}`
+        })
+    }, [props.year]); 
+    useEffect(()=>{
+        if(props.keys.length !== 0) {
+            let keys = props.keys.join(",");
+            queryParams.set("keys", `${keys}`);
+        }else{
+            queryParams.delete("keys");
+        }
+        props.history.push({
+            pathname: '/filter',
+            search: `?${queryParams.toString()}`
+        })
+    }, [props.keys]); 
+    useEffect(()=>{
+        if(props.peoples.length !== 0) {
+            let peoples = props.peoples.join(",");
+            queryParams.set("peoples", `${peoples}`);
+        }else{
+            queryParams.delete("peoples");
+        }
+        props.history.push({
+            pathname: '/filter',
+            search: `?${queryParams.toString()}`
+        })
+    }, [props.peoples]);
 
+    //if there is no filter, redirect page to discover/popular
+    let discoverRedirect = null; 
+    if(props.history.location.pathname ==="/filter" && props.history.location.search === "?"){
+        console.log("Fidan! Redirect me!");
+        discoverRedirect = <Redirect to="/discover"/>
+    }
     useEffect(() => {
         let rightFiltersWidth = rightRef.current.scrollWidth;
         let filtersWidth = filtersRef.current.scrollWidth;
@@ -96,7 +158,7 @@ const rightFilters = (props) => {
     let year =
         props.year.length !== 0 ?
             (<div className={classes.RightFilter}>
-                <p className={classes.RightFilterText}>{props.year[0]} - {props.year[1]}</p>
+                <p className={classes.RightFilterText}>{props.year[0]}: {props.year[1]}</p>
                 <FontAwesomeIcon icon={["far", "times-circle"]} className={classes.XIcon}
                     onClick={() => removeHistoryHandler()} />
             </div>)
@@ -111,7 +173,7 @@ const rightFilters = (props) => {
     });
     let peoples = props.peoples.map((people) => {
         return (
-            <div className={classes.RightFilter}>
+            <div className={classes.RightFilter} key={people}>
                 <p className={classes.RightFilterText}>{people}</p>
                 <FontAwesomeIcon icon={["far", "times-circle"]} className={classes.XIcon}
                     onClick={() => removePeopleHandler(people)} />
@@ -119,7 +181,7 @@ const rightFilters = (props) => {
         );
     });
     let keys = props.keys.map((key) => {
-        return (<div className={classes.RightFilter}>
+        return (<div className={classes.RightFilter} key= {key}>
             <p className={classes.RightFilterText}>{key}</p>
             <FontAwesomeIcon icon={["far", "times-circle"]} className={classes.XIcon}
                 onClick={() => removeKeyHandler(key)} />
@@ -131,6 +193,7 @@ const rightFilters = (props) => {
 
     return (
         <div className={classes.RightFilters} ref={rightRef} >
+            {discoverRedirect}
             <div className={classes.RLIcon}>
                 <FontAwesomeIcon icon={["fas", "chevron-left"]} className={leftArrowStyle.join(" ")}
                     onClick={leftArrowClicked} />

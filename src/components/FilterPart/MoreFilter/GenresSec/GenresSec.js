@@ -3,22 +3,15 @@ import classes from "./GenresSec.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Redirect, NavLink, withRouter } from "react-router-dom"
 import { connect } from "react-redux";
-import * as actions from "./../../../../store/actions/filter";
+import * as actions from "./../../../../store/actions/index";
 
 const genresSection = props => {
-    const [genresIsCloseState, setGenresIsCloseState] = useState(true);
+    const [genresIsCloseState, setGenresIsCloseState] = useState(false);
     const [styleState, setStyleState] = useState(true);
     const addGenreHandler = (newGenre, id) => {
         const hasGenre = props.genres.some((genre) => { return genre.name === newGenre });
         if (!hasGenre) {
             props.onGenreAdded(newGenre, id);
-            //push genre filter to URL
-            let genreIds = props.genres.map(genre => genre.id);
-            genreIds.push(id);
-            props.history.push({
-                pathname: '/filter',
-                search: `?genres=${genreIds.join(",")}`
-            })
         }
     }
 

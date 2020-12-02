@@ -2,6 +2,7 @@ import React from "react";
 import classes from "./MovieTv.css";
 
 const movieTv = props => {
+    console.log("MOVIE/TV");
     return (
         <React.Fragment>
             <div className={classes.SwitchButton}>

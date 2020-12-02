@@ -4,6 +4,7 @@ import { Route, Redirect, Switch, withRouter } from "react-router-dom";
 import Layout from "./hoc/Layout/Layout";
 import DiscoverLists from "./containers/DiscoverLists";
 import FilterLists from "./containers/FilterLists";
+import SearchLists from "./containers/SearchLists";
 // import { connect } from "react-redux";
 // import * as actions from "./store/actions/query";
 
@@ -51,6 +52,8 @@ const app = props => {
           <Route path="/" exact render={() => (<Redirect from="/" to="/discover/Popular" />)} />
           <Route path="/discover/:id" exact component={DiscoverLists} />
           <Route path="/filter" exact component={FilterLists} />
+          <Route path="/search/:id" exact component={SearchLists} />
+          <Redirect to="/"/>
         </Switch>
       </Suspense>
     </React.Fragment>

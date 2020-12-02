@@ -9,7 +9,7 @@ import MainContent from "./../../containers/MainContent/MainContent"
 const layout = props => {
     return (
         <div className={classes.Container}>
-            <MenuButton />
+            {/* <MenuButton /> */}
             <Sidebar />
             <MainContent />
         </div>

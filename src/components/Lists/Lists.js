@@ -10,9 +10,11 @@ const lists = props => {
         return (<List title={data.title} overview={data.overview} url={props.url} poster={data.poster_path} />);
     });
     return (
+        <React.Fragment>
         <div className={classes.Lists}>
             {lists}
-            <div className={classes.PrevNextButtons}>
+        </div >
+        <div className={classes.PrevNextButtons}>
                 <div className={classes.PrevNextButton}>
                     <FontAwesomeIcon icon={["fas", "chevron-left"]}
                         className={[classes.PrevNextIcon, classes.PrevButton].join(" ")} />
@@ -23,8 +25,8 @@ const lists = props => {
                     <FontAwesomeIcon icon={["fas", "chevron-right"]}
                         className={[classes.PrevNextIcon, classes.NextButton].join(" ")} />
                 </div>
-            </div >
-        </div >
+        </div>
+        </React.Fragment>
     )
 }
 const mapStateToProps = state => {

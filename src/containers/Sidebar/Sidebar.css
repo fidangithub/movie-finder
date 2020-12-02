@@ -1,16 +1,13 @@
 .Sidebar {
-  position: sticky;
+  height: 100%;
   padding: 6rem 0.5rem 0rem 0.5rem;
   display: flex;
   flex-direction: column;
   min-width: max-content;
-  /* top: 0rem;
-  bottom: 0rem; */
   width: 2rem;
   background-color: white;
   transition: all .2s ease;
 }
-
 .Sidebar > * {
   margin-bottom: 1rem;
 }
@@ -27,4 +24,62 @@
 .SidebarOpen {
   transition: all .2s ease;
   border-right: 1px solid rgba(0, 0, 0, 0.18);
+}
+.Menu{
+  box-sizing: border-box;
+  z-index:5;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3rem;
+  height: 3rem;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin: 6% 5%;
+  border: none;
+}
+.Menu:focus, .Menu:active{
+  outline: none;
+}
+.Menu:active{
+  animation: scaleRound 2s ease;
+}
+@keyframes scaleRound {
+  0% {
+    background-color: white;
+  }
+  100% {
+    background-color: rgb(114, 112, 112);
+  }
+}
+.MenuIcon{
+  font-size: 1.4rem;
+  color: var(--main-color-3);
+} 
+.Footer {
+  margin: 3rem 2rem 1rem 2rem;
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--main-color-2);
+  border-top: .5px solid var(--main-color-1);
+}
+.Footer > p {
+  font-size: .65rem;
+  margin-bottom: .3rem;
+}
+.Me > span{
+  color: var(--main-color-6);
+  font-weight: 700;
+}
+.Link {
+  color: var(--main-color-6);
+  text-decoration: none;
+  margin-left: 3px;
+  font-weight: 700;
 }

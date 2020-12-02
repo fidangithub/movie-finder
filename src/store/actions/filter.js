@@ -60,15 +60,21 @@ export const removeImdb = () => {
         type: actionTypes.REMOVE_IMDB
     }
 }
-export const addHistory = (minVal, maxVal) => {
+export const addHistory = (select, selectedYear) => {
     return {
         type: actionTypes.ADD_HISTORY,
-        minVal: minVal,
-        maxVal: maxVal
+        select: select,
+        selectedYear: selectedYear
     }
 }
 export const removeHistory = () => {
     return {
         type: actionTypes.REMOVE_HISTORY
+    }
+}
+export const onInputValueAdd = (val) => {
+    return {
+        type: actionTypes.ADD_INPUT_VALUE,
+        val: val
     }
 }

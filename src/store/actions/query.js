@@ -23,9 +23,15 @@ export const fetchListsForDiscover = (discoverType) => {
         discoverType: discoverType
     }
 }
-export const fetchListsForFilter = (pathname) => {
+export const fetchListsForFilter = (search) => {
     return {
         type: actionTypes.FETCH_LISTS_FOR_FILTER,
-        pathname: pathname
+        search: search
+    }
+}
+export const fetchListsForSearch = (search) => {
+    return {
+        type: actionTypes.FETCH_LISTS_FOR_SEARCH,
+        search: search
     }
 }

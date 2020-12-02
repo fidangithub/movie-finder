@@ -4,9 +4,9 @@ import { connect } from "react-redux";
 import * as actions from "./../store/actions/index";
 import { withRouter } from "react-router-dom";
 
-const filterLists = props => {
+const searchLists = props => {
     useEffect(() => {
-        props.onFetchListsForFilter(props.history.location.search);
+        props.onFetchListsForSearch(props.searchInput);
     });
     return (
         <React.Fragment>
@@ -17,9 +17,15 @@ const filterLists = props => {
         </React.Fragment>
     );
 }
-const mapDispatchToProps = dispatch => {
+
+const mapStateToProps = state => {
     return {
-        onFetchListsForFilter: (search) => dispatch(actions.fetchListsForFilter(search))
+        searchInput: state.filter.searchInput
     }
 }
-export default withRouter(connect(null, mapDispatchToProps)(filterLists));
+const mapDispatchToProps = dispatch => {
+    return {
+        onFetchListsForSearch: (search) => dispatch(actions.fetchListsForSearch(search))
+    }
+}
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(searchLists));

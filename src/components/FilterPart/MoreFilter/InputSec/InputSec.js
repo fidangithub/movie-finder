@@ -20,9 +20,9 @@ const inputSection = (props) => {
     });
     const addValueToRedux = () => {
         if (props.type === "key")
-            props.onInputKeyAdded(inputValue);
+            props.onInputKeyAdded(inputValue.trim());
         else {
-            props.onInputPeopleAdded(inputValue);
+            props.onInputPeopleAdded(inputValue.trim());
         }
         setInputValue("");
     }

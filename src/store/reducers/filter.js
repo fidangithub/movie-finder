@@ -9,6 +9,7 @@ const initialState = {
     keys: [],
     imdb: [],
     year: [],
+    searchInput: ""
 }
 const getGenres = (state, action) => {
     return updatedObject(state, {
@@ -58,13 +59,18 @@ const removeImdb = (state, action) => {
 }
 const addHistory = (state, action) => {
     return updatedObject(state, {
-        year: [action.minVal, action.maxVal]
+        year: [action.select, action.selectedYear]
     });
 }
 const removeHistory = (state, action) => {
     return updatedObject(state, {
         year: []
     });
+}
+const addInputValue = (state, action) => {
+    return updatedObject(state, {
+        searchInput: action.val
+    })
 }
 const reducer = (state = initialState, action) => {
     switch (action.type) {
@@ -90,6 +96,8 @@ const reducer = (state = initialState, action) => {
             return addHistory(state, action);
         case actionTypes.REMOVE_HISTORY:
             return removeHistory(state, action);
+        case actionTypes.ADD_INPUT_VALUE:
+            return addInputValue(state, action)
         default:
             return state;
     }

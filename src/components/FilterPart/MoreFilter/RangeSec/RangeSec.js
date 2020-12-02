@@ -3,8 +3,9 @@ import classes from "./RangeSec.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+import { withRouter } from "react-router-dom"
 import { connect } from "react-redux";
-import * as actions from "../../../../store/actions/filter";
+import * as actions from "../../../../store/actions/index";
 
 const rangeSection = (props) => {
     const [minRange, setMinRange] = useState("0");
@@ -67,7 +68,6 @@ const rangeSection = (props) => {
     let total = 230;
     let leftTrack = +minRange * 1.83 + margin;
     let rightTrack = total - (+maxRange * 1.83) - margin;
-
 
     if (+minRange > +maxRange - 7) {
         setMaxRange(+minRange + 7);
@@ -165,4 +165,4 @@ const mapDispatchToProps = dispatch => {
         onHistoryAdded: (minVal, maxVal) => dispatch(actions.addHistory(minVal, maxVal))
     }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(rangeSection);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(rangeSection));

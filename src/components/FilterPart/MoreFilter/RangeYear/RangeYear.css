@@ -1,0 +1,177 @@
+.RangeSection {
+  width: 100%;
+  margin: 0.5rem 0;
+  cursor: pointer;
+  backface-visibility: hidden;
+  border: 1px solid transparent;
+  border-radius: 50px;
+  transform: all 1s ease-out;
+}
+.Caption {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.2rem 0.2rem 0.2rem 0.6rem;
+}
+.Name {
+  width: 10rem;
+  display: flex;
+}
+.Name:hover > * {
+  color: var(--main-color-3);
+}
+.NameIcon{
+  color: var(--main-color-2);
+  width: 1rem !important;
+  font-size: 1rem;
+  margin-right: 0.8rem;
+}
+.Name:hover > .NameIcon {
+  color: var(--main-color-3);
+}
+.RangeWrapper{
+  margin: 1.4rem 0.2rem 1rem 2.2rem;
+  position: relative;
+}
+.Range:active,
+.Range:focus {
+  outline: none;
+}
+.Range:nth-child(2) {
+  background: none;
+}
+.Show{
+  display: block !important;
+  opacity: 1 !important;
+}
+.SelectType{
+  border: none;
+  box-shadow: none;
+  font-size: .9rem;
+  color: var(--main-color-2);
+  font-family: var(--main-font);
+  cursor: pointer;
+}
+.SelectType:active, .SelectType:focus, .SelectType:hover{
+  box-shadow: none;
+  border: none;
+  outline: none;
+}
+.SelectType > option{
+  padding: 0 1rem 0 1rem;
+}
+.RangeInput {
+  font-size: 0.78rem;
+  margin-top: 0.2rem;
+  margin-right: 0.3rem;
+  width: max-content;
+  display: flex;
+  color: var(--main-color-2);
+}
+.YearRange > span {
+  width: 1.9rem !important;
+  text-align: center;
+  backface-visibility: smooth;
+  transition: all 0.2s ease-out;
+}
+.RangeWrapper{
+  margin: 1.4rem 0.2rem 1rem 2.2rem;
+  position: relative;
+}
+.RangeSlider{
+  position: relative;
+  display: flex;
+}
+.RangeSpan{
+  font-size: 0.36rem;
+  position: absolute;
+  top: -1.8rem;
+  width: 1.8rem;
+  height: 1.8rem;
+  text-align: center;
+  background-color: var(--main-color-3);
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  transition: opacity 0.1s ease-out;
+  display: none;
+  opacity: 0;
+  z-index: 200;
+}
+.RangeSpan > span {
+  width: 1.1rem;
+  height: 1.1rem;
+  font-size: 0.6rem;
+  top: 8px;
+  left: 4px;
+  position: absolute;
+  color: white;
+  transform: rotate(45deg);
+}
+.MultiRange {
+  position: relative;
+}
+.Range {
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 200px;
+  margin: 0;
+  /* Add some L/R padding to ensure box shadow of handle is shown */
+  padding: 0 2px;
+  overflow: hidden;
+  border: 0;
+  border-radius: 1px;
+  outline: none;
+  /* Use a linear gradient to generate only the 2px height background */
+  background: linear-gradient(var(--main-color-2), var(--main-color-2))
+    no-repeat center;
+  background-size: 100% 1.4px;
+  pointer-events: none;
+  position: absolute;
+}
+.Range:active,
+.Range:focus {
+  outline: none;
+}
+.Range:nth-child(2) {
+  background: none;
+}
+.Range::-webkit-slider-thumb {
+  z-index: 3;
+  height: 11px;
+  width: 11px;
+  border-radius: 11px;
+  background-color: var(--main-color-3);
+  position: relative;
+  margin: 5px 0;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  pointer-events: all;
+  transition: box-shadow 0.1s ease-out;
+}
+
+.Range::-webkit-slider-thumb:hover {
+  box-shadow: 0 0 0 5px rgba(69, 106, 114, 0.2);
+}
+.MultiRangeTrack {
+  position: absolute;
+  width: 200px;
+  background: linear-gradient(var(--main-color-2), var(--main-color-2))
+    no-repeat center;
+  height: 2px;
+  margin-top: 0.6rem;
+  z-index: -3;
+}
+.Years{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  margin-top: 10%;
+}
+.Years >span{
+  font-size: .6rem;
+  color: var(--main-color-6);
+  font-weight: 700;
+}
