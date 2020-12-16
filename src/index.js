@@ -6,6 +6,7 @@ import { createStore, applyMiddleware, compose, combineReducers } from "redux";
 import { Provider } from "react-redux";
 import filterReducer from "./store/reducers/filter";
 import queryReducer from "./store/reducers/query";
+import uiReducer from "./store/reducers/ui";
 
 import './index.css';
 import App from './App';
@@ -16,7 +17,8 @@ import { watchDiscover } from "./store/sagas/index";
 
 const rootReducers = combineReducers({
     filter: filterReducer,
-    query: queryReducer
+    query: queryReducer,
+    ui: uiReducer
 });
 
 const sagaMiddleware = createSagaMiddleware();

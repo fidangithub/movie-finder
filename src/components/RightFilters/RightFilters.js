@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
+import {Redirect, withRouter } from "react-router-dom";
 
 import classes from "./RightFilters.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { connect } from "react-redux";
-import {Redirect, withRouter } from "react-router-dom";
 import * as actions from "./../../store/actions/index"
 
 const rightFilters = (props) => {
@@ -15,9 +15,56 @@ const rightFilters = (props) => {
     const filtersRef = useRef();
     const rightRef = useRef();
 
+    //get filter data from query (not from reducer because we want it to be responsive to the query)
+    let searchParams = new URLSearchParams(props.history.location.search);
+
+    let fetchedPage = searchParams.get("page");
+    let queryPage = fetchedPage ? fetchedPage : 1;
+
+    let queryGenres = searchParams.get("genres");
+    queryGenres = queryGenres ? queryGenres.split(",") : [];
+    
+    let queryPeople = searchParams.get("people");
+    queryPeople = queryPeople ? queryPeople.split(",") : [];
+
+    let queryKeys = searchParams.get("keys");
+    queryKeys = queryKeys ? queryKeys.split(",") : [];
+
+    let queryImdb = [];
+    let queryMinImdb = searchParams.get("minImdb");
+    queryMinImdb ? queryImdb.push(queryMinImdb) : null;
+    let queryMaxImdb = searchParams.get("maxImdb");
+    queryMaxImdb ? queryImdb.push(queryMaxImdb) : null;
+
+    let queryYearData = [];
+    let queryYearType = searchParams.get("yearType");
+    queryYearType ? queryYearData.push(queryYearType) : null;
+    let queryYear = searchParams.get("year");
+    queryYear ? queryYearData.push(queryYear) : null;
+   
+    // start from page one when filter change
+    useEffect(()=>{
+        props.onResetPageNumber();
+         console.log(props.genres);
+    },[props.genres, props.people, props.keys, props.year, props.imdb, props.searchInput, props.discoverType]);
+
     //ADD AND DELETE URL PARAMS WHEN RIGHT FILTER CHANGES
     let queryParams = new URLSearchParams(window.location.search);
-    console.log(props.year)
+   
+    useEffect(()=>{
+        console.log("hi");
+        if(props.page !== 1 ){
+            console.log("dont delete page...");
+            queryParams.set("page", `${props.page}`);
+        }else{
+            console.log("delete page...");
+            queryParams.delete("page");
+        }
+        props.history.push({
+            search: `?${queryParams.toString()}`
+        });
+    }, [props.page]);
+
     useEffect(()=>{
         if(props.genres.length !== 0){
             let genreIds = props.genres.map(genre => genre.id);
@@ -30,7 +77,7 @@ const rightFilters = (props) => {
             search: `?${queryParams.toString()}`
         });
     }, [props.genres]); 
-    useEffect(()=>{
+    useEffect(()=>{                                                 
         if(props.imdb.length !== 0) {
             queryParams.set("minImdb", `${props.imdb[0]}`);
             queryParams.set("maxImdb", `${props.imdb[1]}`);
@@ -69,17 +116,18 @@ const rightFilters = (props) => {
         })
     }, [props.keys]); 
     useEffect(()=>{
-        if(props.peoples.length !== 0) {
-            let peoples = props.peoples.join(",");
-            queryParams.set("peoples", `${peoples}`);
+        if(props.people.length !== 0) {
+            let people = props.people.join(",");
+            queryParams.set("people", `${people}`);
         }else{
-            queryParams.delete("peoples");
+            queryParams.delete("people");
         }
         props.history.push({
             pathname: '/filter',
             search: `?${queryParams.toString()}`
         })
-    }, [props.peoples]);
+    }, [props.people]);
+
 
     //if there is no filter, redirect page to discover/popular
     let discoverRedirect = null; 
@@ -147,41 +195,47 @@ const rightFilters = (props) => {
     }
 
     let imdb =
-        props.imdb.length !== 0 ?
+        queryImdb.length !== 0 ?
             (<div className={classes.RightFilter}>
-                <p className={classes.RightFilterText}>{props.imdb[0]} - {props.imdb[1]}</p>
+                <p className={classes.RightFilterText}>{queryImdb[0]} - {queryImdb[1]}</p>
                 <FontAwesomeIcon icon={["far", "times-circle"]} className={classes.XIcon}
                     onClick={() => removeImdbHandler()} />
             </div>)
             : null;
 
     let year =
-        props.year.length !== 0 ?
+        queryYearData.length !== 0 ?
             (<div className={classes.RightFilter}>
-                <p className={classes.RightFilterText}>{props.year[0]}: {props.year[1]}</p>
+                <p className={classes.RightFilterText}>{queryYearData[0]}: {queryYearData[1]}</p>
                 <FontAwesomeIcon icon={["far", "times-circle"]} className={classes.XIcon}
                     onClick={() => removeHistoryHandler()} />
             </div>)
             : null;
 
-    let genres = props.genres.map((genre) => {
-        return (<div className={classes.RightFilter} key={genre.id}>
-            <p className={classes.RightFilterText}>{genre.name}</p>
-            <FontAwesomeIcon icon={["far", "times-circle"]} className={classes.XIcon}
-                onClick={() => removeGenreHandler(genre)} />
-        </div>);
-    });
-    let peoples = props.peoples.map((people) => {
+    let filteredGenre = props.fetchedGenres.filter((f) => {
+        return queryGenres.includes(""+f.id);
+    })
+    
+    let genres = filteredGenre.map((g) => {
         return (
-            <div className={classes.RightFilter} key={people}>
+            <div className={classes.RightFilter} key={g.id}>
+                <p className={classes.RightFilterText}>{g.name}</p>
+                    <FontAwesomeIcon icon={["far", "times-circle"]} className={classes.XIcon}
+                    onClick={() => removeGenreHandler(g)} />
+            </div>
+        );
+    });
+    let people = queryPeople.map((people) => {
+        return (
+            <div className={classes.RightFilter} key={people + Math.random*101}>
                 <p className={classes.RightFilterText}>{people}</p>
                 <FontAwesomeIcon icon={["far", "times-circle"]} className={classes.XIcon}
                     onClick={() => removePeopleHandler(people)} />
             </div>
         );
     });
-    let keys = props.keys.map((key) => {
-        return (<div className={classes.RightFilter} key= {key}>
+    let keys = queryKeys.map((key) => {
+        return (<div className={classes.RightFilter} key= {key + Math.random*101}>
             <p className={classes.RightFilterText}>{key}</p>
             <FontAwesomeIcon icon={["far", "times-circle"]} className={classes.XIcon}
                 onClick={() => removeKeyHandler(key)} />
@@ -203,7 +257,7 @@ const rightFilters = (props) => {
             <div className={classes.FiltersContainer} ref={containerRef}>
                 <div className={classes.Filters} ref={filtersRef}>
                     {genres}
-                    {peoples}
+                    {people}
                     {keys}
                     {imdb}
                     {year}
@@ -215,11 +269,15 @@ const rightFilters = (props) => {
 
 const mapStateToProps = state => {
     return {
+        fetchedGenres: state.filter.fetchedGenres,
         genres: state.filter.genres,
         keys: state.filter.keys,
-        peoples: state.filter.peoples,
+        people: state.filter.people,
         imdb: state.filter.imdb,
-        year: state.filter.year
+        year: state.filter.year,
+        searchInput: state.filter.searchInput,
+        page: state.filter.page,
+        discoverType: state.filter.discoverType
     }
 }
 const mapDispatchToProps = dispatch => {
@@ -228,7 +286,8 @@ const mapDispatchToProps = dispatch => {
         onPeopleRemoved: peopleName => dispatch(actions.removePeopleInput(peopleName)),
         onKeyRemoved: keyName => dispatch(actions.removeKeyInput(keyName)),
         onImdbRemove: () => dispatch(actions.removeImdb()),
-        onHistoryRemove: () => dispatch(actions.removeHistory())
+        onHistoryRemove: () => dispatch(actions.removeHistory()),
+        onResetPageNumber: () => dispatch(actions.resetPageNumber())
     }
 }
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(rightFilters));

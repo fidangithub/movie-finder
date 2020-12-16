@@ -18,34 +18,34 @@ export const addGenre = (genreName, genreId) => {
         genreId: genreId
     }
 }
-export const removeGenre = (genreName) => {
+export const removeGenre = (genre) => {
     return {
         type: actionTypes.REMOVE_GENRE,
-        genreName: genreName
+        genre: genre
     }
 }
-export const addPeopleInput = (inputValue) => {
+export const addPeopleInput = (peopleInput) => {
     return {
         type: actionTypes.ADD_PEOPLE_INPUT,
-        inputValue: inputValue
+        peopleInput: peopleInput
     }
 }
-export const removePeopleInput = (inputValue) => {
+export const removePeopleInput = (peopleInput) => {
     return {
         type: actionTypes.REMOVE_PEOPLE_INPUT,
-        inputValue: inputValue
+        peopleInput: peopleInput
     }
 }
-export const addKeyInput = (inputValue) => {
+export const addKeyInput = (keyInput) => {
     return {
         type: actionTypes.ADD_KEY_INPUT,
-        inputValue: inputValue
+        keyInput: keyInput
     }
 }
-export const removeKeyInput = (inputValue) => {
+export const removeKeyInput = (keyInput) => {
     return {
         type: actionTypes.REMOVE_KEY_INPUT,
-        inputValue: inputValue
+        keyInput: keyInput
     }
 }
 export const addImdb = (minVal, maxVal) => {
@@ -76,5 +76,26 @@ export const onInputValueAdd = (val) => {
     return {
         type: actionTypes.ADD_INPUT_VALUE,
         val: val
+    }
+}
+export const increasePage = () => {
+    return {
+        type: actionTypes.INCREASE_PAGE
+    }
+}
+export const decreasePage = () => {
+    return {
+        type: actionTypes.DECREASE_PAGE
+    }
+}
+export const resetPageNumber = () => {
+    return {
+        type: actionTypes.RESET_PAGE_NUMBER
+    }
+}
+export const addDiscoverType = (discoverType) => {
+    return {
+        type: actionTypes.GET_DISCOVER_TYPE,
+        discoverType: discoverType
     }
 }

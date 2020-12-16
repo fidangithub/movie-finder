@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const discoverSection = props => {
     return (
         <NavLink className={classes.DiscoverSection}
-            activeClassName={classes.Fidan}
+            activeClassName={classes.Active}
             to={`/discover/${props.type}`}
         >
             <FontAwesomeIcon icon={[`${props.iconType}`, `${props.icon}`]}

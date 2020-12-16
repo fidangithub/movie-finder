@@ -1,0 +1,30 @@
+.Movie {
+  width: 90%;
+  display: grid;
+  grid-template-columns:  1.6fr 1fr ;
+  margin:  12vh auto 16vh;
+}
+.DescriptionWrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: -2rem;
+  position: relative;
+  padding: 0 1.6rem;
+}
+.Description {
+  width: 95%;
+  color: var(--main-color-3);
+  font-size: .8rem;
+}
+.Description > * {
+  margin-bottom: 1.5rem;
+}
+.Similar {
+    margin: 2rem 0;
+    padding: 1rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 1.2rem;
+    color: var(--main-color-6);
+}

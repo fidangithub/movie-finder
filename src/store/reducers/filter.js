@@ -1,15 +1,16 @@
 import * as actionTypes from "../actions/actionTypes";
-import { updatedObject } from "../../shared/utility"
-import { addMinRange } from "../actions/filter";
+import { updatedObject } from "../../shared/utility";
 
 const initialState = {
     fetchedGenres: [],
     genres: [],
-    peoples: [],
+    people: [],
     keys: [],
     imdb: [],
     year: [],
-    searchInput: ""
+    searchInput: "",
+    page: 1,
+    discoverType: "",
 }
 const getGenres = (state, action) => {
     return updatedObject(state, {
@@ -24,27 +25,31 @@ const addGenre = (state, action) => {
 }
 const removeGenre = (state, action) => {
     return updatedObject(state, {
-        genres: state.genres.filter(genre => genre !== action.genreName)
+        genres: state.genres.filter(genre => genre.id !== action.genre.id)
     });
 }
 const addPeopleInput = (state, action) => {
+    let statePeople = state.people;
     return updatedObject(state, {
-        peoples: state.peoples.concat(action.inputValue)
+        people: statePeople.concat(action.peopleInput)
     });
 }
 const removePeopleInput = (state, action) => {
+    let statePeople = state.people;
     return updatedObject(state, {
-        peoples: state.peoples.filter(people => people !== action.inputValue)
+        people: statePeople.filter(people => people !== action.peopleInput)
     });
 }
 const addKeyInput = (state, action) => {
+    let stateKeys = state.keys;
     return updatedObject(state, {
-        keys: state.keys.concat(action.inputValue)
+        keys: stateKeys.concat(action.keyInput)
     });
 }
 const removeKeyInput = (state, action) => {
+    let stateKeys = state.keys;
     return updatedObject(state, {
-        keys: state.keys.filter(key => key !== action.inputValue)
+        keys: stateKeys.filter(key => key !== action.keyInput)
     });
 }
 const addImdb = (state, action) => {
@@ -72,6 +77,28 @@ const addInputValue = (state, action) => {
         searchInput: action.val
     })
 }
+const increasePage = (state, action) => {
+    let oldPage = state.page;
+    return updatedObject(state, {
+        page: oldPage+1
+    })
+}
+const decreasePage = (state, action) => {
+    let oldPage = state.page;
+    return updatedObject(state, {
+        page: oldPage-1
+    })
+}
+const resetPageNumber = (state, action) => {
+    return updatedObject(state, {
+        page: 1
+    });
+}
+const getDiscoverType = (state, action) => {
+    return updatedObject(state, {
+        discoverType: action.discoverType
+    });
+}
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.GET_GENRES_SUCCESS:
@@ -97,7 +124,15 @@ const reducer = (state = initialState, action) => {
         case actionTypes.REMOVE_HISTORY:
             return removeHistory(state, action);
         case actionTypes.ADD_INPUT_VALUE:
-            return addInputValue(state, action)
+            return addInputValue(state, action);
+        case actionTypes.INCREASE_PAGE:
+            return increasePage(state, action);
+        case actionTypes.DECREASE_PAGE:
+            return decreasePage(state, action);
+        case actionTypes.RESET_PAGE_NUMBER:
+            return resetPageNumber(state, action);
+        case actionTypes.GET_DISCOVER_TYPE:
+            return getDiscoverType(state, action);
         default:
             return state;
     }

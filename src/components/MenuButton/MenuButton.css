@@ -10,7 +10,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  margin: .6rem 1rem;
+  margin: .6rem .4rem;
   border: none;
 }
 .Menu:focus, .Menu:active{

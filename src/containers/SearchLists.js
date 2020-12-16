@@ -6,7 +6,8 @@ import { withRouter } from "react-router-dom";
 
 const searchLists = props => {
     useEffect(() => {
-        props.onFetchListsForSearch(props.searchInput);
+        props.onFetchListsForSearch(props.history.location);
+        console.log(props.history.location.pathname.split("/")[2]);
     });
     return (
         <React.Fragment>

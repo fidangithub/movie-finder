@@ -14,6 +14,10 @@ const genresSection = props => {
             props.onGenreAdded(newGenre, id);
         }
     }
+    //button clicked; when page position is close(false), close genre list
+    useEffect(()=>{
+        props.position ? setGenresIsCloseState(false) : setGenresIsCloseState(true);
+    }, [props.position])
 
     ////////////// ADDING GENRES  /////////////////
     let genre = props.fetchedGenres.map((genre) => {
@@ -66,7 +70,8 @@ const genresSection = props => {
 const mapStateToProps = state => {
     return {
         fetchedGenres: state.filter.fetchedGenres,
-        genres: state.filter.genres
+        genres: state.filter.genres,
+        position: state.ui.position
     }
 }
 

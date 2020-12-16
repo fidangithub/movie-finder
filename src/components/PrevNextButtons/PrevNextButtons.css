@@ -1,0 +1,52 @@
+.PrevNextButtons {
+  margin: 4rem 1rem 2rem 1rem;
+  display: flex;
+  align-items: center;
+}
+.Prev {
+  justify-content: flex-start;
+}
+.Next {
+  justify-content: flex-end;
+}
+.Both {
+  justify-content: space-between;
+}
+.PrevNextButton {
+  border: 1px solid var(--main-color-6);
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 8rem;
+  height: 0.6rem;
+  padding: 1rem;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+  background-color: var(--main-color-6);
+  box-shadow: 0 .5rem 2rem var(--main-color-7);
+}
+.PrevNextButton:hover{
+  transform: translateY(-3px);
+}
+.PrevNextButton:active{
+  box-shadow: none;
+}
+.PrevNextIcon {
+  font-size: 0.6rem;
+  color: white;
+  width: 0.6rem !important;
+}
+.PrevButton {
+  position: absolute;
+  left: 1rem;
+}
+.NextButton {
+  position: absolute;
+  right: 1rem;
+}
+.PrevNextPageText {
+  font-size: 0.8rem;
+  color: white;
+}

@@ -1,0 +1,22 @@
+.Icon{
+  width: .6rem !important;
+  font-size:  .6rem;
+  height: .6rem;
+  fill: var(--main-color-3)
+}
+.Sections{
+  width: 100%;
+  display:flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.Section{
+  display: flex;
+  align-items: center;
+  margin-right: .6rem;
+  line-height: 1;
+}
+.Type{
+  margin-left: .2rem;
+  font-size:.8rem;
+}

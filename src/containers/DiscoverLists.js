@@ -6,7 +6,7 @@ import { withRouter } from "react-router-dom";
 
 const discoverLists = props => {
     useEffect(() => {
-        props.onFetchListsForDiscover(props.history.location.pathname);
+        props.onFetchListsForDiscover(props.history.location);
     });
     return (
         <React.Fragment>
@@ -19,7 +19,7 @@ const discoverLists = props => {
 }
 const mapDispatchToProps = dispatch => {
     return {
-        onFetchListsForDiscover: (discoverName) => dispatch(actions.fetchListsForDiscover(discoverName))
+        onFetchListsForDiscover: (discoverType) => dispatch(actions.fetchListsForDiscover(discoverType))
     }
 }
 export default connect(null, mapDispatchToProps)(discoverLists);

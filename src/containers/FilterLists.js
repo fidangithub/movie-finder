@@ -6,7 +6,7 @@ import { withRouter } from "react-router-dom";
 
 const filterLists = props => {
     useEffect(() => {
-        props.onFetchListsForFilter(props.history.location.search);
+        props.onFetchListsForFilter(props.history.location);
     });
     return (
         <React.Fragment>

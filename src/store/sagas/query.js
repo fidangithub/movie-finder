@@ -3,20 +3,38 @@ import { put } from "redux-saga/effects";
 import * as actions from "../actions/index";
 
 export function* fetchListsForDiscover(action) {
-    let query = decodeURIComponent(action.discoverType).replace(/\s+/g, '_');
+    let query = decodeURIComponent(action.discoverPath.pathname).replace(/\s+/g, '_');
     query = query.replace("discover", "movie").toLowerCase();
     yield put(actions.deleteData());
+
+    let discoverType = query.split("/")[2];
+    yield put(actions.addDiscoverType(discoverType));
+
+    let searchParams = new URLSearchParams(action.discoverPath.search);
+    let fetchedPage = searchParams.get("page");
+    let page = fetchedPage ? fetchedPage : 1;
+    console.log(query, page)
     try {
-        const response = yield axios.get(query);
+        const response = yield axios.get(query, {
+            params: {
+                page: page
+            }
+        });
         yield put(
             actions.listsData(response.data.results)
         );
+        yield put(
+            actions.totalPagesData(response.data.total_pages)
+        );
+        // yield put(actions.resetPageNumber());
     } catch (error) {
         console.log("ERROR OCCURED");
     }
 }
 export function* fetchListsForFilter(action) {
-    let searchParams = new URLSearchParams(action.search);
+    let searchParams = new URLSearchParams(action.search.search);
+    let fetchedPage = searchParams.get("page");
+    let page = fetchedPage ? fetchedPage : 1;
     let genres = searchParams.get("genres");
     let peoples = searchParams.get("peoples");
     let keys = searchParams.get("keys");
@@ -84,27 +102,73 @@ export function* fetchListsForFilter(action) {
                 "with_keywords" : `${keyIds.join(",")}`,
                 "vote_average.gte" : minImdb,
                 "vote_average.lte" : maxImdb,
-                ...yearSearched
+                ...yearSearched,
+                page: page
             }
         });
         yield put(
             actions.listsData(response.data.results)
         );
+        yield put(
+            actions.totalPagesData(response.data.total_pages)
+        );
+        // yield put(actions.resetPageNumber());
     } catch (error) {
         console.log("ERROR OCCURED");
     }
 }
 export function* fetchListsForSearch(action){
+    let searchParams = new URLSearchParams(action.path.search);
+    let fetchedPage = searchParams.get("page");
+    let page = fetchedPage ? fetchedPage : 1;
+
+    let search = action.path.pathname.split("/")[2];
     yield put(actions.deleteData());
     try {
         const response = yield axios.get("/search/movie", {
             params: {
-                query: action.search
+                query: search,
+                page: page
             }
         });
         yield put(
+            actions.totalPagesData(response.data.total_pages)
+        );
+        yield put(
             actions.listsData(response.data.results)
         );
+        // yield put(actions.resetPageNumber());
+    } catch (error) {
+        console.log("ERROR OCCURED");
+    }
+}
+export function* fetchDataForMovie(action){
+    let movieId = action.path.pathname.split("/")[2];
+    yield put(actions.deleteData());
+    try {
+        const response = yield axios.get(`/movie/${movieId}`);
+        const responseCast = yield axios.get(`/movie/${movieId}/credits`);
+        const responseLanguage = yield axios.get(`/configuration/languages`);
+        const responseSimilar = yield axios.get(`/movie/${movieId}/similar`);
+        // yield put(
+        //     actions.totalPagesData(1)
+        // );
+        yield put(
+            actions.movieData(response.data)
+        );
+        yield put(
+            actions.castData(responseCast.data.cast)
+        );
+        yield put(
+            actions.languageData(responseLanguage.data)
+        );
+        yield put(
+            actions.similarData(responseSimilar.data.results)
+        );
+        yield put(
+            actions.totalPagesData(responseSimilar.data.total_pages)
+        );
+        // yield put(actions.resetPageNumber());
     } catch (error) {
         console.log("ERROR OCCURED");
     }

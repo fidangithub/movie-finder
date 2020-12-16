@@ -17,10 +17,10 @@ export const deleteData = () => {
         type: actionTypes.DELETE_DATA
     }
 }
-export const fetchListsForDiscover = (discoverType) => {
+export const fetchListsForDiscover = (discoverPath) => {
     return {
         type: actionTypes.FETCH_LISTS_FOR_DISCOVER,
-        discoverType: discoverType
+        discoverPath: discoverPath
     }
 }
 export const fetchListsForFilter = (search) => {
@@ -29,9 +29,45 @@ export const fetchListsForFilter = (search) => {
         search: search
     }
 }
-export const fetchListsForSearch = (search) => {
+export const fetchListsForSearch = (path) => {
     return {
         type: actionTypes.FETCH_LISTS_FOR_SEARCH,
-        search: search
+        path: path
+    }
+}
+export const totalPagesData = (totalPages) => {
+    return {
+        type: actionTypes.GET_TOTAL_PAGES,
+        totalPages: totalPages
+    }
+}
+export const fetchDataForMovie = (path) => {
+    return {
+        type: actionTypes.FETCH_DATA_FOR_MOVIE,
+        path: path
+    }
+}
+export const movieData = (data) => {
+    return {
+        type: actionTypes.MOVIE_DATA,
+        data: data
+    }
+}
+export const castData = (data) => {
+    return {
+        type: actionTypes.CAST_DATA,
+        data: data
+    }
+}
+export const languageData = (data) => {
+    return {
+        type: actionTypes.LANGUAGE_DATA,
+        data: data
+    }
+}
+export const similarData = (data) => {
+    return {
+        type: actionTypes.SIMILAR_DATA,
+        data: data
     }
 }

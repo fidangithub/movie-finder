@@ -5,14 +5,13 @@ import Layout from "./hoc/Layout/Layout";
 import DiscoverLists from "./containers/DiscoverLists";
 import FilterLists from "./containers/FilterLists";
 import SearchLists from "./containers/SearchLists";
-// import { connect } from "react-redux";
-// import * as actions from "./store/actions/query";
+import Movie from "./containers/Movie";
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 
 import {
   faBars, faSignal, faChevronUp, faUserPlus, faPlus, faKey, faHistory, faSearch,
-  faChevronLeft, faChevronRight
+  faChevronLeft, faChevronRight, faPlay
 } from '@fortawesome/free-solid-svg-icons';
 
 
@@ -40,7 +39,8 @@ library.add(
   faSearch,
   faChevronLeft,
   faChevronRight,
-  faStar
+  faStar,
+  faPlay
 );
 
 const app = props => {
@@ -53,6 +53,7 @@ const app = props => {
           <Route path="/discover/:id" exact component={DiscoverLists} />
           <Route path="/filter" exact component={FilterLists} />
           <Route path="/search/:id" exact component={SearchLists} />
+          <Route path="/movie/:id" exact component={Movie} />
           <Redirect to="/"/>
         </Switch>
       </Suspense>

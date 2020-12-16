@@ -1,0 +1,47 @@
+.Others{
+  margin-top: 1.5rem;
+  display: flex;
+  /* margin-left: .5rem; */
+}
+.OtherButton{
+  width: 6rem;
+  height: 1.8rem;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border:none;
+  /* border: 1px solid var(--main-color-6); */
+  color: var(--main-color-4);
+  border-radius: 2rem;
+  box-shadow: 0px 4px 4px rgba(0, 27, 38, 0.12);
+  cursor: pointer;
+  position: relative;
+  transition: all .2s ease-in-out;
+}
+.OtherButton:first-child{
+  margin-right:2rem;
+}
+.OtherButton > p{
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  padding: .4rem;
+}
+.Icon{
+  width: .8rem !important;
+  font-size: .8rem;
+  height: .8rem;
+  fill:var(--main-color-3);
+}
+.OtherButton:hover{
+  box-shadow: 0px 4px 4px rgba(0, 27, 38, 0.2);
+  transform: rotate(2deg) scale(1.1);
+}
+.OtherButton:focus,
+.OtherButton:visited,
+.OtherButton:visited{
+  outline: none;
+  transform: translateY(.25rem);
+  box-shadow: 0px 4px 4px rgba(0, 27, 38, 0.06);
+}

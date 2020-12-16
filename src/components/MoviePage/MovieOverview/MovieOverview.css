@@ -1,0 +1,8 @@
+.Header{
+  color: var(--main-color-6);
+  font-size:.8rem;
+  margin-bottom: .4rem;
+}
+.OverviewText{
+  font-size: .7rem;
+}

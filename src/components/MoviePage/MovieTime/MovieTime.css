@@ -1,0 +1,14 @@
+.Time {
+  display: flex;
+}
+.TimeElements {
+  font-size: .8rem;
+  color: var(--main-color-2);
+  padding: 0.3rem 0.5rem;
+  margin-right: .5rem;
+  border: 1px solid var(--main-color-1);
+}
+.Imdb{
+  color: var(--main-color-3) !important;
+  border: 1px solid var(--main-color-3) !important;
+}

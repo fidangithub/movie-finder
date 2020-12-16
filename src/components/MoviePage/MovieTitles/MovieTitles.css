@@ -1,0 +1,10 @@
+.Name {
+   font-size: 2rem;
+   margin-bottom: 1.2rem;
+   color: var(--main-color-3);
+}
+.Tagline {
+  text-transform: uppercase;
+  font-size: .8rem;
+  color: var(--main-color-4);
+}

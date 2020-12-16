@@ -2,32 +2,47 @@ import React, {useState, useEffect, useRef} from "react";
 import classes from "./Sidebar.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { connect } from "react-redux";
 
 import MovieTv from "./../../components/MovieTv/MovieTv";
-import FilterPart from "./../../components/FilterPart/FilterPart"
+import FilterPart from "./../../components/FilterPart/FilterPart";
+import MenuButton from "./../../components/MenuButton/MenuButton";
 
 const sidebar = props => {
     const sidebarRef = useRef();
-    const [top, setTop] = useState(0);
+    const [hover, setHover] = useState(false);
+    let top = 0;
 
     document.addEventListener("scroll", ()=>{
         let scroll = window.scrollY;
         let sidebarHeight = sidebarRef.current.clientHeight;
         let screenHeight = window.screen.height;
         if(scroll + screenHeight > sidebarHeight){
-            setTop(screenHeight - sidebarHeight);
+            // setTop(screenHeight - sidebarHeight);
+            top = screenHeight - sidebarHeight;
         }else{
-            setTop(0);
+            top = 0;
         }
+        if(top > 0){top = 0;}
     });
-    if(top > 0){setTop(0)}
+    const mouseEntered = () =>{
+        if(!props.position){
+            setHover(true);
+        }
+    }
+    const mouseLeaved = () =>{
+        if(!props.position){
+            setHover(false);
+        }
+    } 
+    console.log(hover, props.position);
     return (
-        <div className={[classes.Sidebar, classes.SidebarOpen].join(" ")} ref={sidebarRef}
-        style={{position: `sticky`, top: `${top}px`}}>
-            <button className={classes.Menu}>
-            <FontAwesomeIcon icon={["fas", "bars"]} className={classes.MenuIcon} />
-            </button>
-            <FontAwesomeIcon icon={["far", "times-circle"]} className={classes.XIcon} />
+        <div className={[classes.Sidebar, classes.SidebarOpen, 
+            (hover && !props.position) ? classes.Hover : "" ].join(" ")} ref={sidebarRef}
+        style={{position: `sticky`, top: `${top}px`}} 
+        onMouseOver={mouseEntered} onMouseLeave={mouseLeaved}>
+            <MenuButton/>
+            {/* <FontAwesomeIcon icon={["far", "times-circle"]} className={classes.XIcon} /> */}
             <MovieTv />
             <FilterPart />
             <div className={classes.Footer}> 
@@ -41,5 +56,9 @@ const sidebar = props => {
 
     );
 }
-
-export default sidebar;
+const mapStateToProps = state => {
+    return {
+        position: state.ui.position
+    }
+}
+export default connect(mapStateToProps)(sidebar);

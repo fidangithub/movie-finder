@@ -1,0 +1,54 @@
+.Image{
+  transition: all .2s ease-in-out;
+  display:flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin-top: -12vh;
+}
+.ImageWrapper{
+  position: relative;
+  display:flex;
+  justify-self: center;
+  align-items: center;
+  justify-content: center;
+}
+.ImageWrapper > img {
+  width: 19rem;
+  border-radius:.8rem;
+}
+.Shadow{
+  box-shadow: 0rem 1rem 2rem rgba(0,0,0,0.25);
+}
+.Icon{
+  width: 2rem !important;
+  font-size: 2rem;
+  height: 2rem;
+  color: rgba(255, 255, 255, 0.95);
+  margin-left: .2rem;
+}
+.PlayButton{
+  position: absolute;
+  width: 5rem;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  background-color: rgba(0, 27, 38, 0.35);
+  animation: scaleUp 1s ease;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+@keyframes scaleUp{
+  0%{
+    transform: scale(1.2);
+  }
+  50%{
+    transform: scale(.8);
+    opacity: .5;
+  }
+  100{
+    transform: scale(1);
+  }
+}
