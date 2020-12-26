@@ -17,7 +17,7 @@ const search = (props) => {
     const onSubmitHandler = (event) =>{
         event.preventDefault();
         props.onInputValueAdd(value);
-        props.history.push(`/search/${props.filterType}/${value}`)
+        props.history.push(process.env.PUBLIC_URL + `/search/${props.filterType}/${value}`)
         setValue("");
     }
     let placeholder = props.filterType==="movie" ? "movie" : "tv shows";

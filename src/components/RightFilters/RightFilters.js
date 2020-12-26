@@ -72,7 +72,7 @@ const rightFilters = (props) => {
             queryParams.delete("genres");
         }
         props.history.push({
-            pathname: `/filter/${props.filterType}`,
+            pathname: process.env.PUBLIC_URL +`/filter/${props.filterType}`,
             search: `?${queryParams.toString()}`
         });
     }, [props.genres]); 
@@ -85,7 +85,7 @@ const rightFilters = (props) => {
             queryParams.delete("maxImdb");
         }
         props.history.push({
-            pathname: `/filter/${props.filterType}`,
+            pathname: process.env.PUBLIC_URL +`/filter/${props.filterType}`,
             search: `?${queryParams.toString()}`
         })
     }, [props.imdb]); 
@@ -98,7 +98,7 @@ const rightFilters = (props) => {
             queryParams.delete("year");
         }
         props.history.push({
-            pathname: `/filter/${props.filterType}`,
+            pathname: process.env.PUBLIC_URL + `/filter/${props.filterType}`,
             search: `?${queryParams.toString()}`
         })
     }, [props.year]); 
@@ -110,7 +110,7 @@ const rightFilters = (props) => {
             queryParams.delete("keys");
         }
         props.history.push({
-            pathname: `/filter/${props.filterType}`,
+            pathname: process.env.PUBLIC_URL + `/filter/${props.filterType}`,
             search: `?${queryParams.toString()}`
         })
     }, [props.keys]); 
@@ -122,7 +122,7 @@ const rightFilters = (props) => {
             queryParams.delete("people");
         }
         props.history.push({
-            pathname: `/filter/${props.filterType}`,
+            pathname: process.env.PUBLIC_URL + `/filter/${props.filterType}`,
             search: `?${queryParams.toString()}`
         })
     }, [props.people]);
@@ -131,8 +131,8 @@ const rightFilters = (props) => {
     let discoverRedirect = null; 
     if((props.history.location.pathname ==="/filter/movie" || props.history.location.pathname ==="/filter/tv")
      && props.history.location.search === "?"){
-        let path =  `/discover/${props.filterType}/Popular`;
-        discoverRedirect = <Redirect to= {path}/>
+        let path = process.env.PUBLIC_URL + `/discover/${props.filterType}/Popular`;
+        discoverRedirect = <Redirect to={path}/>
     }
 
     //right filter transition when page resize or when user add new filter 

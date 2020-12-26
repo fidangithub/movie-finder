@@ -9,7 +9,7 @@ const noResults = props => {
         <div className={classes.NoResult}>
              <img src={NoResults} alt="" className={classes.Image}/>
              <p className={classes.Text}>No results found</p>
-             <NavLink className={classes.Link} to={`/discover/movie/Popular`}>
+             <NavLink className={classes.Link} to={process.env.PUBLIC_URL + `/discover/movie/Popular`}>
                 <FontAwesomeIcon icon={["fas", "home"]} className={classes.Icon} />
                 <p>Back to Page</p>
              </NavLink>
