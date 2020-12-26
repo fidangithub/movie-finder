@@ -1,8 +1,9 @@
 import * as actionTypes from './actionTypes';
 
-export const getGenres = () => {
+export const getGenres = (filterType) => {
     return {
-        type: actionTypes.GET_GENRES
+        type: actionTypes.GET_GENRES,
+        filterType: filterType
     }
 }
 export const getGenresSuccess = (genres) => {
@@ -97,5 +98,23 @@ export const addDiscoverType = (discoverType) => {
     return {
         type: actionTypes.GET_DISCOVER_TYPE,
         discoverType: discoverType
+    }
+}
+export const checkboxChecked = (checked) => {
+    return {
+        type: actionTypes.CHECKBOX_CHECKED,
+        checked: checked
+    }
+}
+export const deleteFilters = () =>{
+    return {
+        type: actionTypes.DELETE_FILTERS
+    }
+}
+export const deleteFiltersAddGenre = (genreName, genreId) =>{
+    return {
+        type: actionTypes.DELETE_FILTERS_ADD_GENRE,
+        genreName: genreName,
+        genreId: genreId
     }
 }

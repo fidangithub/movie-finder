@@ -1,14 +1,49 @@
 .Time {
   display: flex;
 }
+.Time > *:not(:last-child){
+  height: max-content;
+  text-align: center;
+}
 .TimeElements {
   font-size: .8rem;
   color: var(--main-color-2);
   padding: 0.3rem 0.5rem;
   margin-right: .5rem;
   border: 1px solid var(--main-color-1);
+  height: 2rem;
+  width: max-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .Imdb{
   color: var(--main-color-3) !important;
   border: 1px solid var(--main-color-3) !important;
+  overflow:hidden;
 }
+.Imdb > *{
+  text-align: center;
+  width: 100%;
+  transition: all .2s ease;
+  margin: .15rem;
+}
+.Imdb >*:last-child{
+  font-size: .8rem;
+  width: max-content;
+}
+/* 2 rem height - 0.3rem *2 padding(up and down) =  1.4rem */
+.Imdb:hover > * {
+  transform: translateY(-1.4rem);
+}
+@media (max-width: 900px){
+  .Time{
+    justify-content: center;
+  }
+}
+
+
+
+
+
+

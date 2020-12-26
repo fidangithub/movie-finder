@@ -6,10 +6,11 @@ export const queryChanged = (queryName) => {
         queryName: queryName
     }
 }
-export const listsData = (data) => {
+export const listsData = (data, filterType) => {
     return {
         type: actionTypes.LISTS_DATA,
-        data: data
+        data: data,
+        filterType: filterType
     }
 }
 export const deleteData = () => {
@@ -47,10 +48,11 @@ export const fetchDataForMovie = (path) => {
         path: path
     }
 }
-export const movieData = (data) => {
+export const movieData = (data, filterType) => {
     return {
         type: actionTypes.MOVIE_DATA,
-        data: data
+        data: data,
+        filterType: filterType
     }
 }
 export const castData = (data) => {
@@ -65,9 +67,15 @@ export const languageData = (data) => {
         data: data
     }
 }
-export const similarData = (data) => {
+export const similarData = (data, filterType) => {
     return {
         type: actionTypes.SIMILAR_DATA,
-        data: data
+        data: data,
+        filterType: filterType
+    }
+}
+export const fetchingFail = () => {
+    return {
+        type: actionTypes.FETCH_FAILED
     }
 }

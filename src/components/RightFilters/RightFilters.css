@@ -19,7 +19,6 @@
 .FiltersContainer::-webkit-scrollbar {
   height: 0px;
 }
-
 .Filters {
   display: flex;
   transition: all 0.2s ease-out;
@@ -80,4 +79,13 @@
 }
 .Active{
   visibility: visible !important;
+}
+@media (max-width: 900px){
+  .RightFilters {
+    margin: 2rem 0 2rem 1rem;
+  }
+  .FiltersContainer{
+    padding: 1rem;
+    width: 90%;
+  }
 }

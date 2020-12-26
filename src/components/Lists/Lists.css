@@ -11,3 +11,9 @@
   text-decoration: none;
   color: inherit;
 }
+@media (max-width: 900px){
+  .Lists {
+    grid-template-columns: repeat(auto-fit, 12rem);
+    grid-auto-rows: 18rem;
+  }
+}

@@ -2,3 +2,19 @@
     display: flex;
     padding: 1rem;
 }
+.MainContent {
+  width: 100%;
+  position: relative;
+  background-color: white;
+  transition: all .2s ease-in;
+  padding-left: 1rem;
+}
+.Open {
+   margin-left: -14.1rem;
+}
+
+@media (max-width: 900px){
+  .MainContent  {
+    padding-left: 0;
+  }
+}

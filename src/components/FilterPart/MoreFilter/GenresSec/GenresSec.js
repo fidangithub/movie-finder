@@ -1,25 +1,40 @@
 import React, { useState, useEffect } from "react";
 import classes from "./GenresSec.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Redirect, NavLink, withRouter } from "react-router-dom"
+import { withRouter } from "react-router-dom"
 import { connect } from "react-redux";
 import * as actions from "./../../../../store/actions/index";
 
 const genresSection = props => {
     const [genresIsCloseState, setGenresIsCloseState] = useState(false);
     const [styleState, setStyleState] = useState(true);
+    const [mobile, setMobile] = useState(null);
+
     const addGenreHandler = (newGenre, id) => {
         const hasGenre = props.genres.some((genre) => { return genre.name === newGenre });
         if (!hasGenre) {
             props.onGenreAdded(newGenre, id);
         }
     }
-    //button clicked; when page position is close(false), close genre list
-    useEffect(()=>{
-        props.position ? setGenresIsCloseState(false) : setGenresIsCloseState(true);
-    }, [props.position])
+    const mobileHandler = () => {
+       window.matchMedia("(max-width: 900px)").matches
+      ? setMobile(true)
+      : setMobile(false);
+    };
 
-    ////////////// ADDING GENRES  /////////////////
+    useEffect(() => {
+        mobileHandler();
+        window.addEventListener("resize", mobileHandler);
+        return () => window.removeEventListener("resize", mobileHandler);
+    }, []);
+    //menu button clicked; when page position is close, close genre list
+    useEffect(()=>{
+        props.position 
+        ? setGenresIsCloseState(false) 
+        : mobile ? setGenresIsCloseState(false) :  setGenresIsCloseState(true);
+    }, [props.position, mobile])
+
+    ////////////// ADDING GENRES /////////////////
     let genre = props.fetchedGenres.map((genre) => {
         let a = props.genres.some((g) => g.name === genre.name);
         return (

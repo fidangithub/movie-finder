@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import classes from "./MenuButton.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,7 +7,6 @@ import * as actions from "./../../store/actions/index";
 
 const menuButton = props => {
     const buttonClickHandler = () =>{
-    console.log("hey fidan");
         props.onButtonClickHandler();
     }
     return (

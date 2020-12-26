@@ -32,7 +32,6 @@ const inputSection = (props) => {
         }
     }
     const buttonClickHandler = () => {
-        console.log(inputValue);
         if (inputValue.trim().length !== 0) {
             addValueToRedux();
         }

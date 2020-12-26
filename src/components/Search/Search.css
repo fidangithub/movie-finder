@@ -36,3 +36,18 @@
   width: 1rem !important;
   font-size: 1rem;
 }
+
+@media (max-width: 900px){
+  .Search{
+    justify-content: flex-end;
+    margin-right:2rem;
+  }
+  .SearchInput {
+    width: 85%;
+  }
+}
+@media (max-width: 1200px){
+  .SearchInput {
+    width: 85%;
+  }
+}

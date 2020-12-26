@@ -20,11 +20,26 @@
   margin-bottom: 1.5rem;
 }
 .Similar {
-    margin: 2rem 0;
-    padding: 1rem 0;
+  margin: 2rem 0;
+  padding: 1rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-style: italic;
+  color: var(--main-color-2);
+}
+@media (max-width: 900px){
+  .Movie{
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    font-size: 1.2rem;
-    color: var(--main-color-6);
+    flex-direction: column-reverse;
+  }
+  .DescriptionWrapper {
+    margin-top: 2rem;
+    padding: 0 .5rem;
+  }
+  .Description {
+    width: 100%;
+    text-align: center;
+  } 
 }

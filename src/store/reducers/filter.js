@@ -11,6 +11,7 @@ const initialState = {
     searchInput: "",
     page: 1,
     discoverType: "",
+    filterType: "movie",
 }
 const getGenres = (state, action) => {
     return updatedObject(state, {
@@ -99,6 +100,31 @@ const getDiscoverType = (state, action) => {
         discoverType: action.discoverType
     });
 }
+const checkboxChecked = (state, action) => {
+    let a = action.checked ? "movie" : "tv";
+    return updatedObject(state, {
+        filterType: a
+    })
+}
+const deleteFilters = (state, action) => {
+    return updatedObject(state, {
+        genres: [],
+        people: [],
+        keys: [],
+        imdb: [],
+        year: []
+    })
+}
+const deleteFiltersAddGenre = (state, action) => {
+    const newGenre = { name: action.genreName, id: action.genreId };
+    return updatedObject(state, {
+        genres: [newGenre],
+        people: [],
+        keys: [],
+        imdb: [],
+        year: []
+    })
+}
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.GET_GENRES_SUCCESS:
@@ -133,6 +159,12 @@ const reducer = (state = initialState, action) => {
             return resetPageNumber(state, action);
         case actionTypes.GET_DISCOVER_TYPE:
             return getDiscoverType(state, action);
+        case actionTypes.CHECKBOX_CHECKED:
+            return checkboxChecked(state, action);
+        case actionTypes.DELETE_FILTERS:
+            return deleteFilters(state, action);
+        case actionTypes.DELETE_FILTERS_ADD_GENRE:
+            return deleteFiltersAddGenre(state, action);
         default:
             return state;
     }

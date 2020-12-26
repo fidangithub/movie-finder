@@ -1,19 +1,21 @@
-import React, { useEffect } from "react";
+import React from "react";
 import classes from "./Lists.css";
 import List from "./List/List"
 import { connect } from "react-redux";
 import PrevNextButtons from "../PrevNextButtons/PrevNextButtons";
+import NoResults from "./../NoResults/NoResults";
 
 const lists = props => {
-    let lists = props.data.map((data) => {
-        return (<List title={data.title} overview={data.overview} url={props.url} id={data.id}
-            poster={data.poster_path} imdb={data.vote_average}/>);
+    let lists = props.data[0].map((data) => {
+        return (<List title={props.data[1]==="movie" ? data.title : data.name} overview={data.overview} 
+            url={props.url} id={data.id} poster={data.poster_path} imdb={data.vote_average}
+            filterType={props.data[1]} key={data.id}/>);
     });
     return (
         <React.Fragment>
-            <div className={classes.Lists}>
-                {lists}
-            </div>
+            {lists.length !== 0 
+            ? <div className={classes.Lists}>{lists}</div> 
+            : <NoResults/> }
             <PrevNextButtons/>
         </React.Fragment>
     )

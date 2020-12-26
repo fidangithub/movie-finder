@@ -122,7 +122,7 @@ const rangeSection = (props) => {
                         style={{ left: `${maxRange * 1.83 - margin}` + `px` }}>
                         <span>{maxValue}</span>
                     </span>
-                    <span className={classes.MultiRange} data-id={props.type} onClick={reduxHandler} >
+                    <span className={classes.MultiRange} data-id={props.type} onClick={reduxHandler} onTouchEnd={reduxHandler}>
                         <input type="range" min="0" max="100" value={minRange} id="lower"
                             onChange={minInputHandler}
                             onMouseEnter={addLowerSpan}

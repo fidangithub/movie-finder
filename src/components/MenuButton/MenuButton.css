@@ -1,7 +1,7 @@
 .Menu{
   box-sizing: border-box;
-  z-index:5;
-  position: absolute;
+  z-index: 300;
+  position: fixed;
   width: 3rem;
   height: 3rem;
   background-color: white;
@@ -10,7 +10,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  margin: .6rem .4rem;
+  margin: .6rem 1rem;
   border: none;
 }
 .Menu:focus, .Menu:active{
@@ -31,3 +31,9 @@
   font-size: 1.4rem;
   color: var(--main-color-3);
 } 
+@media (max-width: 1200px){
+  .Menu{
+    z-index: 5;
+    margin: .6rem 0rem;
+  }
+}

@@ -125,3 +125,8 @@
   box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
   position: relative;
 }
+@media (max-width: 900px){
+  .CardTheme  {
+    font-size: 50%;
+  }
+}

@@ -18,5 +18,11 @@
 }
 .Type{
   margin-left: .2rem;
-  font-size:.8rem;
+  font-size: .8rem;
+  cursor: pointer;
+}
+@media (max-width: 900px){
+  .Sections{
+    justify-content: center;
+  }
 }

@@ -3,7 +3,7 @@
   display: flex;
   /* margin-left: .5rem; */
 }
-.OtherButton{
+.Button{
   width: 6rem;
   height: 1.8rem;
   display:flex;
@@ -18,11 +18,10 @@
   cursor: pointer;
   position: relative;
   transition: all .2s ease-in-out;
+  text-decoration: none;
+  margin: 0 1rem 0 1rem;
 }
-.OtherButton:first-child{
-  margin-right:2rem;
-}
-.OtherButton > p{
+.Button > p{
   display: flex;
   justify-content: center;
   align-self: center;
@@ -34,14 +33,19 @@
   height: .8rem;
   fill:var(--main-color-3);
 }
-.OtherButton:hover{
+.Button:hover{
   box-shadow: 0px 4px 4px rgba(0, 27, 38, 0.2);
   transform: rotate(2deg) scale(1.1);
 }
-.OtherButton:focus,
-.OtherButton:visited,
-.OtherButton:visited{
+.Button:focus,
+.Button:visited,
+.Button:visited{
   outline: none;
   transform: translateY(.25rem);
   box-shadow: 0px 4px 4px rgba(0, 27, 38, 0.06);
+}
+@media (max-width: 900px){
+  .Others {
+    justify-content: center;
+  }
 }

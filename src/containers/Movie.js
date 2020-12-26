@@ -3,31 +3,41 @@ import { Helmet } from "react-helmet";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import * as actions from "./../store/actions/index";
+import MoviePage from "./../components/MoviePage/MoviePage";
+import Spinner from "./../components/Spinner/Spinner";
+import ErrorPage from "./../components/ErrorPage/ErrorPage";
 
 const movie = props => {
      useEffect(() => {
-        console.log(props.history.location);
         props.onFetchDataForMovie(props.history.location)
-    });
+    },[props.history.location]);
+
+    useEffect(()=>{
+        props.onResetPageNumber();
+    },[props.history.location.pathname.split("/")[2]]);
+
+    let lists = props.movieData[0] ? <MoviePage/> : props.error ? <ErrorPage/> :<Spinner/>
     return (
         <React.Fragment>
             <Helmet>
                 <meta charSet="utf-8" />
-                <title>Movies</title>
+                <title>{props.movieData[0].title}</title>
             </Helmet>
+            {lists}
         </React.Fragment>
     );
 }
-// const mapStateToProps = state => {
-//     return {
-//         data: state.query.listsData,
-//         url: state.query.base_url_images
-//     }
-// }
+const mapStateToProps = state => {
+    return {
+        movieData: state.query.movieData,
+        error: state.query.error
+    }
+}
 const mapDispatchToProps = dispatch => {
     return {
         onFetchDataForMovie: (path) => dispatch(actions.fetchDataForMovie(path)),
+        onResetPageNumber: () => dispatch(actions.resetPageNumber())
     }
 }
 
-export default withRouter(connect(null, mapDispatchToProps)(movie));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(movie));

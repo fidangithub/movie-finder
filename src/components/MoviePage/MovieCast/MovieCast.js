@@ -9,7 +9,8 @@ import NotFound from "./../../../../src/svg/notFound.svg"
 const cast = props => {
     const [leftArrowActive, setLeftArrowActive] = useState(false);
     const [rightArrowActive, setRightArrowActive] = useState(false);
-    const [transformState, setTransformState] = useState(0);
+   //when page load, casrWrap transformation X is equal to -160px
+    const [transformState, setTransformState] = useState(-160);
 
     const castWrapRef = useRef();
     const castsRef = useRef();
@@ -17,8 +18,6 @@ const cast = props => {
     useEffect(() => {
         let castWrapWidth = castWrapRef.current.offsetWidth;
         let castsWidth = castsRef.current.scrollWidth;
-        console.log(castWrapRef);
-
         castsRef.current.style.transform = `translateX(${transformState}px)`;
         if (transformState < 0) {
             setLeftArrowActive(true);
@@ -49,29 +48,39 @@ const cast = props => {
         setTransformState(transform);
     }
 
-    // let leftArrowStyle;
-    // let rightArrowStyle;
-
-    // if(leftArrowActive){
-    //     leftArrowStyle = [classes.Active];
-    // }
-    // if(rightArrowActive){
-    //     leftArrowStyle = [classes.Active];
-    // }
-
     let castImageUrlPath = props.cast.map((cast)=>{
         return cast.profile_path
     });
+    let castName = props.cast.map((cast)=>{
+        return cast.name;
+    });
     let images = castImageUrlPath.map((path, id)=>{
         if(path){
-            return (<img src={`${props.url}w500/${path}`} alt="" className={classes.Cast} />);
+            return (
+                <div className={classes.CastWrap} key={castName[id]}>
+                    <span className={classes.Span}>{castName[id]}</span>
+                    <img src={`${props.url}w500/${path}`} alt="" className={classes.Cast} />
+                </div>
+            );
         }else{
             if(props.cast[id].gender === 1){
-                return (<img src={NotFoundWoman} alt="" className={classes.Cast} />)
+                return (
+                <div className={classes.CastWrap} key={castName[id]}>
+                    <span className={classes.Span}>{castName[id]}</span>
+                    <img src={NotFoundWoman} alt="" className={classes.Cast} />
+                </div>)
             }else if(props.cast[id].gender === 2){
-                return (<img src={NotFoundMan} alt="" className={classes.Cast} />);
+                return (
+                    <div className={classes.CastWrap} key={castName[id]}>
+                        <span className={classes.Span}>{castName[id]}</span>
+                        <img src={NotFoundMan} alt="" className={classes.Cast}  />
+                    </div>)
             }else{
-                return (<img src={NotFound} alt="" className={classes.Cast} />);
+                return (
+                    <div className={classes.CastWrap} key={castName[id]}>
+                        <span className={classes.Span}>{castName[id]}</span>
+                        <img src={NotFound} alt="" className={classes.Cast} />
+                    </div>);
             }
         }
     })

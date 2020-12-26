@@ -1,0 +1,40 @@
+.ErrorPage{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.Image{
+    width: 28rem;
+}
+.Text{
+   font-size: 1rem;
+   padding: 3rem;
+   color: var(--main-color-2);
+   text-align: center;
+}
+.Link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: .6rem 1rem;
+    color: white;
+    background-color: var(--main-color-3); 
+    border-radius: 1px;
+    box-shadow: 8px 8px 16px rgba(0, 27, 38, .2);
+}
+.Link > p {
+    font-size: .7rem;
+    margin-left: .3rem;
+}
+.Icon {
+  width: .8rem !important;
+  font-size: .8rem;
+  height: .8rem;
+  color: white;
+}
+@media (max-width: 900px){
+  .Image{
+      width: 20rem;
+  }
+}

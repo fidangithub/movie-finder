@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import classes from "./DiscoverSec.css";
 import { NavLink } from "react-router-dom";
-// import { connect } from "react-redux";
+import { connect } from "react-redux";
 // import * as actions from "./../../../../store/actions/index";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,7 +10,7 @@ const discoverSection = props => {
     return (
         <NavLink className={classes.DiscoverSection}
             activeClassName={classes.Active}
-            to={`/discover/${props.type}`}
+            to={`/discover/${props.filterType}/${props.type}`}
         >
             <FontAwesomeIcon icon={[`${props.iconType}`, `${props.icon}`]}
                 className={classes.DiscoverIcon} />
@@ -18,5 +18,9 @@ const discoverSection = props => {
         </NavLink>
     )
 }
-
-export default discoverSection;
+const mapStateToProps = state => {
+    return {
+        filterType: state.filter.filterType
+    }
+}
+export default connect(mapStateToProps)(discoverSection);

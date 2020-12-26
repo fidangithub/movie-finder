@@ -31,9 +31,10 @@
 .CastsWrapper{
   position: absolute;
   width:90%;
-  overflow:hidden;
+  overflow-x:hidden;
   display:flex;
   align-items: center;
+  padding: 2.5rem;
 }
 .Casts{
   display:flex;
@@ -43,6 +44,32 @@
   width:3rem;
   height:3rem;
   border-radius:50%;
-  margin-right: .7rem;
   object-fit: cover;
+}
+.CastWrap{
+  position: relative;
+  width: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: -1rem;
+}
+.Span {
+  visibility: hidden;
+  position: absolute;
+  opacity: .9;
+  font-size: .6rem;
+  padding: .2rem .5rem;
+  flex-wrap: nowrap;
+  background-color: var(--main-color-3);
+  transition: all .05s ease;
+  border-radius: .1rem;
+  color: white;
+  top: -25%;
+  width: max-content;
+  z-index: 999;
+}
+.CastWrap:hover > .Span {
+  visibility: visible;
 }

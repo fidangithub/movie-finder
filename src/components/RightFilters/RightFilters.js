@@ -18,8 +18,8 @@ const rightFilters = (props) => {
     //get filter data from query (not from reducer because we want it to be responsive to the query)
     let searchParams = new URLSearchParams(props.history.location.search);
 
-    let fetchedPage = searchParams.get("page");
-    let queryPage = fetchedPage ? fetchedPage : 1;
+    // let fetchedPage = searchParams.get("page");
+    // let queryPage = fetchedPage ? fetchedPage : 1;
 
     let queryGenres = searchParams.get("genres");
     queryGenres = queryGenres ? queryGenres.split(",") : [];
@@ -45,19 +45,18 @@ const rightFilters = (props) => {
     // start from page one when filter change
     useEffect(()=>{
         props.onResetPageNumber();
-         console.log(props.genres);
-    },[props.genres, props.people, props.keys, props.year, props.imdb, props.searchInput, props.discoverType]);
-
+    },[props.genres, props.people, props.keys,props.year, props.imdb, props.searchInput, props.discoverType]);
+    
+    useEffect(()=>{
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    }, [props.movieData, props.similarData, props.listsData]) 
     //ADD AND DELETE URL PARAMS WHEN RIGHT FILTER CHANGES
     let queryParams = new URLSearchParams(window.location.search);
    
     useEffect(()=>{
-        console.log("hi");
         if(props.page !== 1 ){
-            console.log("dont delete page...");
             queryParams.set("page", `${props.page}`);
         }else{
-            console.log("delete page...");
             queryParams.delete("page");
         }
         props.history.push({
@@ -73,7 +72,7 @@ const rightFilters = (props) => {
             queryParams.delete("genres");
         }
         props.history.push({
-            pathname: '/filter',
+            pathname: `/filter/${props.filterType}`,
             search: `?${queryParams.toString()}`
         });
     }, [props.genres]); 
@@ -86,7 +85,7 @@ const rightFilters = (props) => {
             queryParams.delete("maxImdb");
         }
         props.history.push({
-            pathname: '/filter',
+            pathname: `/filter/${props.filterType}`,
             search: `?${queryParams.toString()}`
         })
     }, [props.imdb]); 
@@ -99,7 +98,7 @@ const rightFilters = (props) => {
             queryParams.delete("year");
         }
         props.history.push({
-            pathname: '/filter',
+            pathname: `/filter/${props.filterType}`,
             search: `?${queryParams.toString()}`
         })
     }, [props.year]); 
@@ -111,7 +110,7 @@ const rightFilters = (props) => {
             queryParams.delete("keys");
         }
         props.history.push({
-            pathname: '/filter',
+            pathname: `/filter/${props.filterType}`,
             search: `?${queryParams.toString()}`
         })
     }, [props.keys]); 
@@ -123,18 +122,20 @@ const rightFilters = (props) => {
             queryParams.delete("people");
         }
         props.history.push({
-            pathname: '/filter',
+            pathname: `/filter/${props.filterType}`,
             search: `?${queryParams.toString()}`
         })
     }, [props.people]);
 
-
-    //if there is no filter, redirect page to discover/popular
+    //if there is no filter, redirect page to discover/popular, 
     let discoverRedirect = null; 
-    if(props.history.location.pathname ==="/filter" && props.history.location.search === "?"){
-        console.log("Fidan! Redirect me!");
-        discoverRedirect = <Redirect to="/discover"/>
+    if((props.history.location.pathname ==="/filter/movie" || props.history.location.pathname ==="/filter/tv")
+     && props.history.location.search === "?"){
+        let path =  `/discover/${props.filterType}/Popular`;
+        discoverRedirect = <Redirect to= {path}/>
     }
+
+    //right filter transition when page resize or when user add new filter 
     useEffect(() => {
         let rightFiltersWidth = rightRef.current.scrollWidth;
         let filtersWidth = filtersRef.current.scrollWidth;
@@ -277,7 +278,11 @@ const mapStateToProps = state => {
         year: state.filter.year,
         searchInput: state.filter.searchInput,
         page: state.filter.page,
-        discoverType: state.filter.discoverType
+        discoverType: state.filter.discoverType,
+        movieData: state.query.movieData,
+        similarData: state.query.similarData,
+        listsData: state.query.listsData,
+        filterType: state.filter.filterType
     }
 }
 const mapDispatchToProps = dispatch => {

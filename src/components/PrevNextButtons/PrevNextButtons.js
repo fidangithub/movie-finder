@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { withRouter } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classes from "./PrevNextButtons.css";
@@ -6,15 +6,12 @@ import { connect } from "react-redux";
 import * as actions from "./../../store/actions/index";
 
 const prevNextButtons = props => {
-    console.log(props.page, props.page !== 1);
-   
     const prevButtonHandler = () => {
         props.onPageDecreased();
     }
     const nextButtonHandler = () => {
         props.onPageIncreased();
     }
-    
     let prevBtn, nextBtn, btnStyle;
 
     if(props.totalPages === 1 || props.totalPages === 0){

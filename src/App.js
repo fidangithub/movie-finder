@@ -1,17 +1,10 @@
-import React, { Suspense, useEffect } from 'react';
-import { Route, Redirect, Switch, withRouter } from "react-router-dom";
-
+import React from 'react';
 import Layout from "./hoc/Layout/Layout";
-import DiscoverLists from "./containers/DiscoverLists";
-import FilterLists from "./containers/FilterLists";
-import SearchLists from "./containers/SearchLists";
-import Movie from "./containers/Movie";
-
 import { library } from '@fortawesome/fontawesome-svg-core';
 
 import {
   faBars, faSignal, faChevronUp, faUserPlus, faPlus, faKey, faHistory, faSearch,
-  faChevronLeft, faChevronRight, faPlay
+  faChevronLeft, faChevronRight, faPlay, faHome, faExternalLinkAlt
 } from '@fortawesome/free-solid-svg-icons';
 
 
@@ -40,24 +33,14 @@ library.add(
   faChevronLeft,
   faChevronRight,
   faStar,
-  faPlay
+  faPlay,
+  faHome,
+  faExternalLinkAlt
 );
 
 const app = props => {
   return (
-    <React.Fragment>
-      <Layout />
-      <Suspense fallback={<p>Loading...</p>}>
-        <Switch>
-          <Route path="/" exact render={() => (<Redirect from="/" to="/discover/Popular" />)} />
-          <Route path="/discover/:id" exact component={DiscoverLists} />
-          <Route path="/filter" exact component={FilterLists} />
-          <Route path="/search/:id" exact component={SearchLists} />
-          <Route path="/movie/:id" exact component={Movie} />
-          <Redirect to="/"/>
-        </Switch>
-      </Suspense>
-    </React.Fragment>
+    <Layout />
   );
 };
 

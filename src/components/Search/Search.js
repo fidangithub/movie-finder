@@ -17,22 +17,28 @@ const search = (props) => {
     const onSubmitHandler = (event) =>{
         event.preventDefault();
         props.onInputValueAdd(value);
-        props.history.push(`/search/${value}`)
+        props.history.push(`/search/${props.filterType}/${value}`)
         setValue("");
     }
+    let placeholder = props.filterType==="movie" ? "movie" : "tv shows";
     return (
         <form action="#" className={classes.Search} onSubmit={onSubmitHandler}>
             <input type="text" className={classes.SearchInput} onChange={onChangeHandler} value={value}
-            placeholder="Search for movie..." />
+            placeholder={`Search for ` + placeholder + `...`} />
             <button className={classes.SearchButton}>
                 <FontAwesomeIcon icon={["fas", "search"]} className={classes.SearchIcon} />
             </button>
         </form>
     );
 }
+const mapStateToProps = state => {
+    return {
+        filterType: state.filter.filterType
+    }
+}
 const mapDispatchToProps = dispatch => {
     return {
       onInputValueAdd: (val) => dispatch(actions.onInputValueAdd(val))
     }
 }
-export default withRouter(connect(null, mapDispatchToProps)(search));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(search));

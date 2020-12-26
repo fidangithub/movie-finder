@@ -4,7 +4,7 @@
   color: #132D33;
   transform: scale(0.8);
   width: 8rem;
-  margin-top: 6rem;
+  margin-top: 5rem;
 }
 .MTInput[type='checkbox'] {
   height: 0;
@@ -172,3 +172,9 @@
     width: 21px;
   }
 }
+@media (max-width: 1200px){
+  .SwitchButton {
+    margin-top: 0rem;
+  }
+}
+

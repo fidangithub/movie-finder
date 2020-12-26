@@ -2,24 +2,28 @@ import * as actionTypes from "./../actions/actionTypes";
 import { updatedObject } from "../../shared/utility";
 
 const initialState = {
-    listsData: false,
+    listsData: [false, false],
     base_url_images: "https://image.tmdb.org/t/p/",
     totalPages: null,
-    movieData: false,
+    movieData: [false, false], 
     castData: [],
     languageData: [],
-    similarData: false
+    similarData: [false, false],
+    error: null
 }
-const addData = (state, action) => {
+const listsData = (state, action) => {
     return updatedObject(state, {
-        listsData: action.data
+        listsData: [action.data, action.filterType],
+        error: false
     });
 }
+//we call deleteData when fetching start, and we want set error to false wwhen fetch start
 const deleteData = (state, action) => {
     return updatedObject(state, {
-        listsData: false,
-        movieData: false,
-        similarData: false
+        listsData: [false, false],
+        movieData: [false, false],
+        similarData:[false, false],
+        error: false
     });
 }
 const getTotalPages = (state, action) => {
@@ -29,7 +33,7 @@ const getTotalPages = (state, action) => {
 }
 const movieData = (state, action) => {
     return updatedObject(state, {
-        movieData: action.data
+        movieData: [action.data, action.filterType]
     });
 }
 const castData = (state, action) => {
@@ -44,13 +48,18 @@ const languageData = (state, action) => {
 }
 const similarData = (state, action) => {
     return updatedObject(state, {
-        similarData: action.data
+        similarData: [action.data, action.filterType]
     });
+}
+const fetchingFailed = (state, aciton) => {
+    return updatedObject(state, {
+        error: true
+    })
 }
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.LISTS_DATA:
-            return addData(state, action);
+            return listsData(state, action);
         case actionTypes.DELETE_DATA:
             return deleteData(state, action);
         case actionTypes.GET_TOTAL_PAGES:
@@ -63,6 +72,8 @@ const reducer = (state = initialState, action) => {
             return languageData(state, action);
         case actionTypes.SIMILAR_DATA:
             return similarData(state, action);
+        case actionTypes.FETCH_FAILED:
+            return fetchingFailed(state, action);
         default:
             return state;
     }

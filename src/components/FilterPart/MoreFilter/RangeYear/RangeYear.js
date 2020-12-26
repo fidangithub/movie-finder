@@ -41,7 +41,6 @@ const rangeSection = (props) => {
     const reduxHandler = () => {
         props.onHistoryAdded(select, selectedYear)
     }
-    console.log(select);
     return (
         <div className={classes.RangeSection}>
             <div className={classes.Caption}>
@@ -62,7 +61,8 @@ const rangeSection = (props) => {
                         style={{ left: `${value * 1.83 - 6}px` }}>
                         <span>{selectedYear}</span>
                     </span>
-                    <span className={classes.MultiRange} data-id={props.type} onClick={reduxHandler} >
+                    <span className={classes.MultiRange} data-id={props.type} onClick={reduxHandler}
+                    onTouchEnd={reduxHandler}>
                         <input type="range" min="0" max="100" value={value} id="lower"
                             onChange={minInputHandler}
                             onMouseEnter={addBlueSpan}

@@ -11,33 +11,36 @@ library.add(faStar);
 
 let image;
 const list = props => {
+    let imdb = Math.round(props.imdb / 2);
+    let star = [];
+    for(let i = 0; i< imdb; i++){
+        star.push(<FontAwesomeIcon icon={["fas", "star"]} className={classes.StarIcons} 
+        key={Math.random() * 12 + i + "fas" }/>);
+    }
+    for(let i = 0; i< 5-imdb; i++){
+        star.push(<FontAwesomeIcon icon={["far", "star"]} className={classes.StarIcons} 
+        key={Math.random() * 12 + i + "far" }/>);
+    }
     if(props.poster){
         image = (<img src={`${props.url}w500/${props.poster}`} alt="" className={classes.CardImage}/>);
     }else{
         image = (<img src={EmptyCover} alt="" className={classes.CardImage}/>);
     }
 
-
     let overviewData = props.overview;
-    if (overviewData.split(" ").length >= 45) {
-        overviewData = overviewData.split(" ").slice(0, 45).join(" ") + " .....";
+    if (overviewData.split(" ").length >= 40) {
+        overviewData = overviewData.split(" ").slice(0, 40).join(" ") + " .....";
     }
     return (
-        <NavLink to={`/movie/${props.id}`} className={classes.Card}>
-            {/* <img src={`${props.url}w500/${props.poster}`} alt="" className={classes.CardImage} /> */}
+        <NavLink to={`/${props.filterType}/${props.id}`} className={classes.Card}>
             {image}
             <div className={classes.CardWrapper}>
                 <div className={classes.CardWrap}></div>
             </div>
             <div className={classes.CardHeader}>
                 <p className={classes.CardName}>{props.title}</p>
-                {/* <Star/> */}
                 <div className={classes.StarIconWrapper}>
-                    <FontAwesomeIcon icon={["fas", "star"]} className={classes.StarIcons} />
-                    <FontAwesomeIcon icon={["fas", "star"]} className={classes.StarIcons} />
-                    <FontAwesomeIcon icon={["fas", "star"]} className={classes.StarIcons} />
-                    <FontAwesomeIcon icon={["far", "star"]} className={classes.StarIcons} />
-                    <FontAwesomeIcon icon={["far", "star"]} className={classes.StarIcons} />
+                    {star}
                 </div>
             </div>
             <div className={classes.CardTheme}>
