@@ -2,7 +2,7 @@
   width: 70%;
   /* height: 1rem; */
   /* margin: 0.5rem 0; */
-  padding: 0.4rem 0.2rem 0.4rem 0.6rem;
+  padding: 0.4rem 0.2rem 0.6rem 0.6rem;
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -14,8 +14,8 @@
 }
 .Active{
   background-color: var(--main-color-1);
-  width: 120%;
-  margin-left: -30%;
+  width: 140%;
+  margin-left: -35.5%;
   color: var(--main-color-3);
   font-weight: 600;
 }
@@ -28,8 +28,8 @@
 }
 .DiscoverSection:hover {
   background-color: #fbfbfb;
-  width: 120%;
-  margin-left: -30%;
+  width: 140%;
+  margin-left: -35.5%;
 }
 .DiscoverSection:hover > .DiscoverIcon {
   margin-left: 26.5%;
@@ -41,9 +41,9 @@
   align-self: center;
   justify-content: center;
   font-size: 1rem;
-  margin-right: 0.8rem;
+  margin-right: 2rem;
 }
 .DiscoverSection > p {
   padding: .2rem 0;
-  font-size: 0.8rem;
+  font-size: 1rem;
 }

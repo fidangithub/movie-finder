@@ -1,6 +1,6 @@
 .GenresSection {
   width: 100%;
-  margin: 0.5rem 0;
+  margin: 1rem 0;
   cursor: pointer;
   backface-visibility: hidden;
   border: 1px solid transparent;
@@ -18,7 +18,7 @@
   color: var(--main-color-3);
 }
 .GenresMain {
-  width: 10rem;
+  width: 14rem;
   display: flex;
   align-items: center;
   transition: all .2s ease-out;
@@ -33,10 +33,10 @@
   color: var(--main-color-2);
   font-size: 1rem;
   width: 1rem !important;
-  margin-right: 0.8rem;
+  margin-right: 1.8rem;
 }
 .GenresText {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: var(--main-color-2);
 }
 .UpIcon {
@@ -47,7 +47,7 @@
 }
 .GenresList {
   list-style: none;
-  margin-left: 2rem;
+  margin-left: 3rem;
   transition: all 0.2s ease-out;
   overflow: hidden;
   animation: show 0.2s ease-out;
@@ -77,7 +77,7 @@
 .Genre:hover > .GenreIcon {
   color: var(--main-color-3);
 }
-.GenresTextActive{
+.GenresTextActive, .ActiveIcon{
   color:var(--main-color-6);
 }
 .RotateIcon{

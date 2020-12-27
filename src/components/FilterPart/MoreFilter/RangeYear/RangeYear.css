@@ -1,6 +1,6 @@
 .RangeSection {
   width: 100%;
-  margin: 0.5rem 0;
+  margin: 1rem 0;
   cursor: pointer;
   backface-visibility: hidden;
   border: 1px solid transparent;
@@ -24,7 +24,7 @@
   color: var(--main-color-2);
   width: 1rem !important;
   font-size: 1rem;
-  margin-right: 0.8rem;
+  margin-right: 1.8rem;
 }
 .Name:hover > .NameIcon {
   color: var(--main-color-3);
@@ -47,7 +47,7 @@
 .SelectType{
   border: none;
   box-shadow: none;
-  font-size: .9rem;
+  font-size: 1rem;
   color: var(--main-color-2);
   font-family: var(--main-font);
   cursor: pointer;
@@ -75,7 +75,7 @@
   transition: all 0.2s ease-out;
 }
 .RangeWrapper{
-  margin: 1.4rem 0.2rem 1rem 2.2rem;
+  margin: 1.4rem 0.2rem 1rem 3.2rem;
   position: relative;
 }
 .RangeSlider{

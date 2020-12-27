@@ -1,6 +1,6 @@
 .InputSection{
   width: 100%;
-  margin: 0.5rem 0;
+  margin: 1rem 0;
   cursor: pointer;
   backface-visibility: hidden;
   border-radius: 50px;
@@ -15,7 +15,7 @@
   color: var(--main-color-2);
   width: 1rem !important;
   font-size: 1rem;
-  margin-right: 0.8rem;
+  margin-right: 1.8rem;
 }
 .Input {
   width: 100%;
@@ -23,12 +23,12 @@
 }
 input[type='text'].Input {
   color: var(--main-color-6);
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-family: var(--main-font);
   background-color: transparent;
 }
 input.Input::-webkit-input-placeholder {
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-family: var(--main-font);
   color: var(--main-color-2);
 }
@@ -51,6 +51,7 @@ input.Input::-webkit-input-placeholder {
 .InputCaption {
   width: 13rem;
   display: flex;
+  align-items: center;
 }
 .InputCaption:hover > .UserPlusIcon {
   color: var(--main-color-3);

@@ -1,7 +1,7 @@
 .Sidebar {
   min-height: 100vh;
   height: 100%;
-  padding: 0rem 0.5rem 0rem 0.5rem;
+  padding: 0rem 1rem 0rem 0.5rem;
   display: flex;
   flex-direction: column;
   min-width: max-content;
@@ -83,7 +83,7 @@
   left: 0;
   top:0;
   overflow: auto scroll;
-  padding: 2rem 0.5rem 0rem 0.5rem;
+  padding: 2rem 2rem 0rem 0.5rem;
   z-index: 100;
   height: 100%;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
