@@ -9,7 +9,7 @@ const errorPage = props => {
         <div className={classes.ErrorPage}>
             <img src={ErrorSvg} alt="" className={classes.Image}/>
             <p className={classes.Text}>Something went wrong. Please try again later.</p>
-            <NavLink className={classes.Link} to={process.env.PUBLIC_URL + `/discover/movie/Popular`}>
+            <NavLink className={classes.Link} to={ `/discover/movie/Popular`}>
                 <FontAwesomeIcon icon={["fas", "home"]} className={classes.Icon} />
                 <p>Back to Page</p>
              </NavLink>

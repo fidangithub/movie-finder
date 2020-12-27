@@ -10,7 +10,7 @@ const discoverSection = props => {
     return (
         <NavLink className={classes.DiscoverSection}
             activeClassName={classes.Active}
-            to={process.env.PUBLIC_URL + `/discover/${props.filterType}/${props.type}`}
+            to={`/discover/${props.filterType}/${props.type}`}
         >
             <FontAwesomeIcon icon={[`${props.iconType}`, `${props.icon}`]}
                 className={classes.DiscoverIcon} />
