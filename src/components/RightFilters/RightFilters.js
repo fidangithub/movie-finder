@@ -92,7 +92,7 @@ const rightFilters = (props) => {
             queryParams.delete("genres");
         }
         props.history.push({
-            pathname: process.env.PUBLIC_URL +`/filter/${props.filterType}`,
+            pathname: `/filter/${props.filterType}`,
             search: `?${queryParams.toString()}`
         });
     }, [props.genres]); 
@@ -105,7 +105,7 @@ const rightFilters = (props) => {
             queryParams.delete("maxImdb");
         }
         props.history.push({
-            pathname: process.env.PUBLIC_URL +`/filter/${props.filterType}`,
+            pathname: `/filter/${props.filterType}`,
             search: `?${queryParams.toString()}`
         })
     }, [props.imdb]); 
@@ -118,7 +118,7 @@ const rightFilters = (props) => {
             queryParams.delete("year");
         }
         props.history.push({
-            pathname: process.env.PUBLIC_URL + `/filter/${props.filterType}`,
+            pathname:  `/filter/${props.filterType}`,
             search: `?${queryParams.toString()}`
         })
     }, [props.year]); 
@@ -130,7 +130,7 @@ const rightFilters = (props) => {
             queryParams.delete("keys");
         }
         props.history.push({
-            pathname: process.env.PUBLIC_URL + `/filter/${props.filterType}`,
+            pathname:  `/filter/${props.filterType}`,
             search: `?${queryParams.toString()}`
         })
     }, [props.keys]); 
@@ -142,7 +142,7 @@ const rightFilters = (props) => {
             queryParams.delete("people");
         }
         props.history.push({
-            pathname: process.env.PUBLIC_URL + `/filter/${props.filterType}`,
+            pathname:  `/filter/${props.filterType}`,
             search: `?${queryParams.toString()}`
         })
     }, [props.people]);
@@ -153,7 +153,7 @@ const rightFilters = (props) => {
             queryParams.delete("sort");
         }
         props.history.push({
-            pathname: process.env.PUBLIC_URL + `/filter/${props.filterType}`,
+            pathname:  `/filter/${props.filterType}`,
             search: `?${queryParams.toString()}`
         })
     }, [props.filterSort]);
