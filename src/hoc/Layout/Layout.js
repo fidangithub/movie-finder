@@ -38,14 +38,13 @@ const layout = props => {
                 <RightFilters />
                 <Suspense fallback={<p>Loading...</p>}>
                     <Switch>
-                        <Route path= "/" exact render={() => (<Redirect from="/" 
-                        to="/discover/movie/Popular" />)} />
+                        <Route path= "/" exact render={() => (<Redirect from="/" to="/discover/movie/Popular" />)} />
                         <Route path="/discover/:id/:id" exact component={DiscoverLists} />
                         <Route path="/filter/:id" exact component={FilterLists} />
-                        <Route path= "/search/:id/:id" exact component={SearchLists} />
-                        <Route path= "/movie/:id" exact component={Movie} />
-                        <Route path= "/tv/:id" exact component={Movie} />
-                        <Route path= "/error" component={ErrorPage} />
+                        <Route path="/search/:id/:id" exact component={SearchLists} />
+                        <Route path="/movie/:id" exact component={Movie} />
+                        <Route path="/tv/:id" exact component={Movie} />
+                        <Route path="/error" component={ErrorPage} />
                         <Redirect to="/"/>
                     </Switch>
                 </Suspense>

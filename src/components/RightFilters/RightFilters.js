@@ -162,7 +162,7 @@ const rightFilters = (props) => {
     let discoverRedirect = null; 
     if((props.history.location.pathname ==="/filter/movie" || props.history.location.pathname ==="/filter/tv")
      && props.history.location.search === "?"){
-        let path = process.env.PUBLIC_URL + `/discover/${props.filterType}/Popular`;
+        let path = `/discover/${props.filterType}/Popular`;
         discoverRedirect = <Redirect to={path}/>
     }
 
