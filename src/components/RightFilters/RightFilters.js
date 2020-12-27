@@ -17,10 +17,29 @@ const rightFilters = (props) => {
 
     //get filter data from query (not from reducer because we want it to be responsive to the query)
     let searchParams = new URLSearchParams(props.history.location.search);
-
-    // let fetchedPage = searchParams.get("page");
-    // let queryPage = fetchedPage ? fetchedPage : 1;
-
+    let querySort = null;
+    switch (props.filterSort) {
+        case "popularity.desc":
+          querySort = "Sort By Popularity Max"
+          break;
+        case "popularity.asc":
+          querySort  = "Sort By Popularity Min"
+          break;
+        case "release_date.desc":
+          querySort = "Sort By Date Max"
+          break;
+        case "release_date.asc":
+          querySort = "Sort By Date Min"
+          break;
+        case "vote_average.desc":
+          querySort = "Sort By Imdb Max"
+          break;
+        case "vote_average.asc":
+          querySort = "Sort By Imdb Min"
+          break;
+        default:
+          querySort = null;
+    }
     let queryGenres = searchParams.get("genres");
     queryGenres = queryGenres ? queryGenres.split(",") : [];
     
@@ -45,7 +64,8 @@ const rightFilters = (props) => {
     // start from page one when filter change
     useEffect(()=>{
         props.onResetPageNumber();
-    },[props.genres, props.people, props.keys,props.year, props.imdb, props.searchInput, props.discoverType]);
+    },[props.genres, props.people, props.keys,props.year, props.imdb, 
+    props.searchInput, props.discoverType, props.filterSort]);
     
     useEffect(()=>{
         window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
@@ -126,6 +146,17 @@ const rightFilters = (props) => {
             search: `?${queryParams.toString()}`
         })
     }, [props.people]);
+    useEffect(()=>{
+        if(props.filterSort) {
+            queryParams.set("sort", `${props.filterSort}`);
+        }else{
+            queryParams.delete("sort");
+        }
+        props.history.push({
+            pathname: process.env.PUBLIC_URL + `/filter/${props.filterType}`,
+            search: `?${queryParams.toString()}`
+        })
+    }, [props.filterSort]);
 
     //if there is no filter, redirect page to discover/popular, 
     let discoverRedirect = null; 
@@ -194,7 +225,18 @@ const rightFilters = (props) => {
         props.onHistoryRemove();
         init();
     }
-
+    const removeFilterSortHandler = () => {
+        props.onFilterSortRemove();
+        init();
+    }
+    let sort =
+        querySort ?
+            (<div className={classes.RightFilter}>
+                <p className={classes.RightFilterText}>{querySort}</p>
+                <FontAwesomeIcon icon={["far", "times-circle"]} className={classes.XIcon}
+                    onClick={() => removeFilterSortHandler()} />
+            </div>)
+            : null;
     let imdb =
         queryImdb.length !== 0 ?
             (<div className={classes.RightFilter}>
@@ -260,6 +302,7 @@ const rightFilters = (props) => {
                     {genres}
                     {people}
                     {keys}
+                    {sort}
                     {imdb}
                     {year}
                 </div>
@@ -282,7 +325,8 @@ const mapStateToProps = state => {
         movieData: state.query.movieData,
         similarData: state.query.similarData,
         listsData: state.query.listsData,
-        filterType: state.filter.filterType
+        filterType: state.filter.filterType,
+        filterSort: state.filter.filterSort
     }
 }
 const mapDispatchToProps = dispatch => {
@@ -292,7 +336,8 @@ const mapDispatchToProps = dispatch => {
         onKeyRemoved: keyName => dispatch(actions.removeKeyInput(keyName)),
         onImdbRemove: () => dispatch(actions.removeImdb()),
         onHistoryRemove: () => dispatch(actions.removeHistory()),
-        onResetPageNumber: () => dispatch(actions.resetPageNumber())
+        onResetPageNumber: () => dispatch(actions.resetPageNumber()),
+        onFilterSortRemove: () => dispatch(actions.removeFilterSort())
     }
 }
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(rightFilters));

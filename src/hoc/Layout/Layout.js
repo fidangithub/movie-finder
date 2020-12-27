@@ -16,7 +16,6 @@ import ErrorPage from "./../../components/ErrorPage/ErrorPage";
 
 const layout = props => {
     const [mobile, setMobile] = useState(null);
-    console.log(process.env.PUBLIC_URL, process.env.REACT_APP_API_KEY);
 
     const mobileHandler = () => {
        window.matchMedia("(max-width: 1200px)").matches

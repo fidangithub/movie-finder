@@ -4,7 +4,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 
 import {
   faBars, faSignal, faChevronUp, faUserPlus, faPlus, faKey, faHistory, faSearch,
-  faChevronLeft, faChevronRight, faPlay, faHome, faExternalLinkAlt
+  faChevronLeft, faChevronRight, faPlay, faHome, faExternalLinkAlt,faSort
 } from '@fortawesome/free-solid-svg-icons';
 
 
@@ -35,7 +35,8 @@ library.add(
   faStar,
   faPlay,
   faHome,
-  faExternalLinkAlt
+  faExternalLinkAlt,
+  faSort
 );
 
 const app = props => {

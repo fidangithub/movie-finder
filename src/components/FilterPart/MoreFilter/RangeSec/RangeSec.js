@@ -102,7 +102,7 @@ const rangeSection = (props) => {
         <div className={classes.RangeSection}>
             <div className={classes.Caption}>
                 <div className={classes.Name}>
-                    <FontAwesomeIcon icon={[`${props.iconType}`, `${props.iconName}`]}
+                    <FontAwesomeIcon icon={[`fab`, `imdb`]}
                         className={classes.NameIcon} />
                     <p>{props.name}</p>
                 </div>

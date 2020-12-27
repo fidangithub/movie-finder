@@ -2,7 +2,7 @@ export {
     getGenres, getGenresSuccess, addGenre, removeGenre, addPeopleInput, removePeopleInput, 
     addKeyInput, removeKeyInput, addImdb, removeImdb, addHistory, removeHistory, onInputValueAdd,
     increasePage, decreasePage, resetPageNumber, addDiscoverType, checkboxChecked, deleteFilters,
-    deleteFiltersAddGenre
+    deleteFiltersAddGenre, addFilterSort, removeFilterSort
 } from "./filter";
 
 export { queryChanged, listsData, deleteData, fetchListsForDiscover, fetchListsForFilter,

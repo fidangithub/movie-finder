@@ -81,9 +81,6 @@
   visibility: visible !important;
 }
 @media (max-width: 900px){
-  .RightFilters {
-    margin: 2rem 0 2rem 1rem;
-  }
   .FiltersContainer{
     padding: 1rem;
     width: 90%;

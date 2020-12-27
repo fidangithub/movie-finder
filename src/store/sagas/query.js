@@ -44,6 +44,7 @@ export function* fetchListsForFilter(action) {
     let year = searchParams.get("year");
     let yearType = searchParams.get("yearType");
     let filterType = action.search.pathname.split("/").slice(2).join("");
+    let filterSort = searchParams.get("sort");
     
     yield put(actions.deleteData());
     let keyIds = [];
@@ -103,6 +104,7 @@ export function* fetchListsForFilter(action) {
                 "with_keywords" : `${keyIds.join(",")}`,
                 "vote_average.gte" : minImdb,
                 "vote_average.lte" : maxImdb,
+                "sort_by": filterSort,
                 ...yearSearched,
                 page: page
             }

@@ -1,10 +1,10 @@
 import React from "react";
 import classes from "./MoreFilter.css";
 import GenresSec from "./GenresSec/GenresSec";
+import FilterSec from "./FilterSec/FilterSec";
 import InputSec from "./InputSec/InputSec";
 import RangeSec from "./RangeSec/RangeSec";
 import RangeYear from "./RangeYear/RangeYear";
-
 import { connect } from "react-redux";
 import * as actions from "./../../../store/actions/index";
 
@@ -20,8 +20,9 @@ const moreFilter = props => {
                 <GenresSec />
                 {people}
                 <InputSec input="keywords..." iconName="key" type="key" />
-                <RangeSec type="imdb" iconType="fab" iconName="imdb" name="IMDB" />
-                <RangeYear type="year" iconType="fas" iconName="history" name="Release Year" />
+                <FilterSec />
+                <RangeSec type="imdb" name="IMDB" />
+                <RangeYear type="year"name="Release Year" />
             </div>
         </div>
     )

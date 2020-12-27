@@ -45,7 +45,7 @@ const rangeSection = (props) => {
         <div className={classes.RangeSection}>
             <div className={classes.Caption}>
                 <div className={classes.Name}>
-                    <FontAwesomeIcon icon={[`${props.iconType}`, `${props.iconName}`]}
+                    <FontAwesomeIcon icon={[`fas`, `history`]}
                         className={classes.NameIcon} />
                     <select name="year" id="year" className={classes.SelectType} 
                     onChange={onSelect}>

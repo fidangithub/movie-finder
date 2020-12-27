@@ -1,5 +1,6 @@
 import * as actionTypes from "../actions/actionTypes";
 import { updatedObject } from "../../shared/utility";
+import { addFilterType } from "../actions";
 
 const initialState = {
     fetchedGenres: [],
@@ -12,6 +13,8 @@ const initialState = {
     page: 1,
     discoverType: "",
     filterType: "movie",
+    filterSort : null
+
 }
 const getGenres = (state, action) => {
     return updatedObject(state, {
@@ -112,7 +115,8 @@ const deleteFilters = (state, action) => {
         people: [],
         keys: [],
         imdb: [],
-        year: []
+        year: [],
+        filterSort: null
     })
 }
 const deleteFiltersAddGenre = (state, action) => {
@@ -122,7 +126,18 @@ const deleteFiltersAddGenre = (state, action) => {
         people: [],
         keys: [],
         imdb: [],
-        year: []
+        year: [],
+        filterSort: null
+    })
+}
+const addFilterSort = (state, action) => {
+    return updatedObject(state, {
+        filterSort: action.selected
+    })
+}
+const removeFilterSort = (state, action) => {
+    return updatedObject(state, {
+        filterSort: null
     })
 }
 const reducer = (state = initialState, action) => {
@@ -165,6 +180,10 @@ const reducer = (state = initialState, action) => {
             return deleteFilters(state, action);
         case actionTypes.DELETE_FILTERS_ADD_GENRE:
             return deleteFiltersAddGenre(state, action);
+        case actionTypes.ADD_FILTER_SORT:
+            return addFilterSort(state, action);
+        case actionTypes.REMOVE_FILTER_SORT:
+            return removeFilterSort(state, action);
         default:
             return state;
     }

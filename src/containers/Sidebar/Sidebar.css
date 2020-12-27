@@ -79,17 +79,17 @@
 }
 @media (max-width: 1200px){
   .Sidebar {
-  position: fixed;
-  left: 0;
-  top:0;
-  overflow: auto scroll;
-  padding: 2rem 2rem 0rem 0.5rem;
-  z-index: 100;
-  height: 100%;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    left: 0;
+    top:0;
+    overflow: auto scroll;
+    padding: 3rem 1rem 0rem 0.5rem;
+    z-index: 100;
+    height: 100%;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   }
   .XIcon{
-  display: block;
+    display: block;
   }
 }
 

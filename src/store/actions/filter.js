@@ -118,3 +118,14 @@ export const deleteFiltersAddGenre = (genreName, genreId) =>{
         genreId: genreId
     }
 }
+export const addFilterSort = (selected) => {
+    return {
+        type: actionTypes.ADD_FILTER_SORT,
+        selected: selected
+    }
+}
+export const removeFilterSort = () => {
+    return {
+        type: actionTypes.REMOVE_FILTER_SORT
+    }
+}
