@@ -51,6 +51,7 @@
   color: var(--main-color-2);
   font-family: var(--main-font);
   cursor: pointer;
+  background-color: initial;
 }
 .SelectType:active, .SelectType:focus, .SelectType:hover{
   box-shadow: none;
