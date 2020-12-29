@@ -68,7 +68,7 @@ const sidebar = props => {
             style={mobile ? null : {position: `sticky`, top: `${top}px`}} 
             onMouseOver={mouseEntered} 
             onMouseLeave={mouseLeaved}>
-                <FontAwesomeIcon icon={["far", "times-circle"]} className={classes.XIcon} 
+                <FontAwesomeIcon icon={["fas", "times"]} className={classes.XIcon} 
                 onClick={() => setCloseSidebar(true)}/> 
                 <MovieTv />
                 <FilterPart />

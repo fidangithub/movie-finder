@@ -8,7 +8,7 @@
   padding: 0.6rem 0.8rem;
   border-radius: 3rem;
   transition: all 0.2s ease-out;
-  border: 1px solid #f2f2f2;
+  border: none;
   box-shadow: 0 4px 4px rgba(10, 53, 63, 0.02);
   background-color: transparent;
   color:var(--main-color-3);

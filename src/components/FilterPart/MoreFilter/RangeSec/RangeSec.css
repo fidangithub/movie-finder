@@ -11,7 +11,7 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 0.2rem 0.2rem 0.2rem 0.6rem;
+  padding: var(--main-more-filter-padding);
 }
 .Name {
   width: 10rem;
@@ -23,20 +23,18 @@
 }
 .NameIcon{
   color: var(--main-color-2);
-  width: 1rem !important;
-  font-size: 1rem;
-  margin-right: 1.5rem;
+  width: var(--main-svg-size) !important;
+  font-size: var(--main-svg-size);
+  margin-right: var(--main-svg-margin-right);
 }
 .Name:hover > .NameIcon {
   color: var(--main-color-3);
 }
 .Name > p{
-  font-size: 1rem;
+  font-size: var(--main-font-size);
 }
 .RangeInput {
-  font-size: 1rem;
-  margin-top: 0.2rem;
-  margin-right: 0.3rem;
+  font-size: var(--main-font-size);
   width: max-content;
   display: flex;
   color: var(--main-color-2);
@@ -54,11 +52,11 @@
   transition: all 0.2s ease-out;
 }
 .RangeWrapper{
-  margin: 1.4rem 0.2rem 1rem 3.2rem;
+  margin: 1.4rem 0.2rem 1rem 2.6rem;
   position: relative;
 }
 .RangeSlider{
-   position: relative;
+  position: relative;
   display: flex;
 }
 .RangeLowerSpan,
@@ -148,4 +146,12 @@
 .Show{
   display: block !important;
   opacity: 1;
+}
+@media (max-width: 1200px){
+  .Name > p{
+    font-size: var(--main-mobile-font-size);
+  }
+  .RangeInput {
+    font-size: var(--main-mobile-font-size);
+  }
 }

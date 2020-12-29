@@ -21,8 +21,9 @@ const moviePage = props => {
                     title={props.filterType ==="movie" ? props.movieData.title : props.movieData.name} 
                     tagline={props.movieData.tagline}/>
                     <MovieTime languageData={props.languageData} language={props.movieData.original_language}
-                     runtime={props.movieData.runtime}
-                    date={props.movieData.release_date} imdb={props.movieData.vote_average}
+                    runtime={props.movieData.runtime}
+                    date={props.filterType === "movie" ? props.movieData.release_date :props.movieData.first_air_date}
+                     imdb={props.movieData.vote_average}
                     voteAverage={props.movieData.vote_count}/>
                     <MovieGenres movieGenres={props.movieData.genres}/>
                     {props.movieData.overview ? <MovieOverview overview={props.movieData.overview}/> : null}

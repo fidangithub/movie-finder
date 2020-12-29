@@ -2,7 +2,7 @@
   width: 70%;
   /* height: 1rem; */
   /* margin: 0.5rem 0; */
-  padding: 0.4rem 0.2rem 0.6rem 0.6rem;
+  padding: 0.4rem 0.2rem 0.4rem 0.6rem;
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -36,14 +36,19 @@
 }
 .DiscoverIcon{
   color: var(--main-color-2);
-  width: 1rem !important;
+  width: var(--main-svg-size) !important;
   display: flex;
   align-self: center;
   justify-content: center;
-  font-size: 1rem;
-  margin-right: 1.5rem;
+  font-size: var(--main-svg-size);
+  margin-right: var(--main-svg-margin-right);
 }
 .DiscoverSection > p {
   padding: .2rem 0;
-  font-size: 1rem;
+  font-size: var(--main-font-size);
+}
+@media (max-width: 1200px){
+  .DiscoverSection > p {
+    font-size:  var(--main-mobile-font-size);
+  }
 }

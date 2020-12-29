@@ -86,3 +86,8 @@
     width: 90%;
   }
 }
+@media (max-width: 1200px){
+  .RightFilters {
+    margin: 1rem 0 1rem 0rem;
+  }
+}

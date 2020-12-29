@@ -11,7 +11,7 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 0.2rem 0.2rem 0.2rem 0.6rem;
+  padding: var(--main-more-filter-padding);
 }
 .Name {
   width: 10rem;
@@ -23,15 +23,15 @@
 }
 .NameIcon{
   color: var(--main-color-2);
-  width: 1rem !important;
-  font-size: 1rem;
-  margin-right: 1.5rem;
+  width: var(--main-svg-size) !important;
+  font-size: var(--main-svg-size);
+  margin-right: var(--main-svg-margin-right);
 }
 .Name:hover > .NameIcon {
   color: var(--main-color-3);
 }
 .RangeWrapper{
-  margin: 1.4rem 0.2rem 1rem 2.2rem;
+  margin: 1.4rem 0.2rem 1rem 2.6rem;
   position: relative;
 }
 .Range:active,
@@ -48,7 +48,7 @@
 .SelectType{
   border: none;
   box-shadow: none;
-  font-size: 1rem;
+  font-size: var(--main-font-size);
   color: var(--main-color-2);
   font-family: var(--main-font);
   cursor: pointer;
@@ -75,10 +75,6 @@
   text-align: center;
   backface-visibility: smooth;
   transition: all 0.2s ease-out;
-}
-.RangeWrapper{
-  margin: 1.4rem 0.2rem 1rem 3.2rem;
-  position: relative;
 }
 .RangeSlider{
   position: relative;
@@ -166,15 +162,19 @@
   z-index: -3;
 }
 .Years{
-  width: 100%;
+  width: 90%;
   display: flex;
   justify-content: space-between;
   position: absolute;
   margin-top: 10%;
-  margin-left: -3%;
 }
 .Years >span{
   font-size: .6rem;
   color: var(--main-color-6);
   font-weight: 700;
+}
+@media (max-width: 1200px){
+  .SelectType{
+    font-size: var(--main-mobile-font-size);
+  }
 }

@@ -4,11 +4,12 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 
 import {
   faBars, faSignal, faChevronUp, faUserPlus, faPlus, faKey, faHistory, faSearch,
-  faChevronLeft, faChevronRight, faPlay, faHome, faExternalLinkAlt,faSort
+  faChevronLeft, faChevronRight, faPlay, faHome, faExternalLinkAlt, faSort, faSortAmountUp, 
+  faTimes
 } from '@fortawesome/free-solid-svg-icons';
 
 
-import { faTimesCircle, faHeart, faCalendarAlt, faDotCircle, faPlusSquare, faStar }
+import {faHeart, faCalendarAlt, faDotCircle, faPlusSquare, faStar, faTimesCircle }
   from '@fortawesome/free-regular-svg-icons';
 
 import { faYoutube, faMegaport, faImdb } from '@fortawesome/free-brands-svg-icons';
@@ -36,7 +37,9 @@ library.add(
   faPlay,
   faHome,
   faExternalLinkAlt,
-  faSort
+  faSort,
+  faSortAmountUp,
+  faTimes
 );
 
 const app = props => {

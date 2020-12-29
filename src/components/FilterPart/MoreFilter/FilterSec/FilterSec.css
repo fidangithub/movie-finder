@@ -11,7 +11,7 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 0.2rem 0.2rem 0.2rem 0.6rem;
+  padding: var(--main-more-filter-padding);
 }
 .Name {
   width: 10rem;
@@ -23,9 +23,9 @@
 }
 .NameIcon{
   color: var(--main-color-2);
-  width: 1rem !important;
-  font-size: 1rem;
-  margin-right: 1.5rem;
+  width: var(--main-svg-size) !important;
+  font-size: var(--main-svg-size);
+  margin-right: var(--main-svg-margin-right);
 }
 .Name:hover > .NameIcon {
   color: var(--main-color-3);
@@ -34,7 +34,7 @@
 .SelectType{
   border: none;
   box-shadow: none;
-  font-size: 1rem;
+  font-size: var(--main-font-size);
   color: var(--main-color-2);
   font-family: var(--main-font);
   cursor: pointer;
@@ -48,4 +48,9 @@
 }
 .SelectType > option{
   padding: 0 1rem 0 1rem;
+}
+@media (max-width: 1200px){
+  .SelectType {
+    font-size: var(--main-mobile-font-size);
+  }
 }

@@ -8,7 +8,7 @@
 .TimeElements {
   font-size: .8rem;
   color: var(--main-color-2);
-  padding: 0.3rem 0.5rem;
+  padding: 6.5px 0.5rem;
   margin-right: .5rem;
   border: 1px solid var(--main-color-1);
   height: 2rem;
@@ -20,25 +20,30 @@
 .Imdb{
   color: var(--main-color-3) !important;
   border: 1px solid var(--main-color-3) !important;
-  overflow:hidden;
+  overflow: hidden;
+  padding: 0  !important;
 }
 .Imdb > *{
   text-align: center;
-  width: 100%;
+  width: max-content; /* 17px(text) + 0.5*2px(padding) = 27;  */
   transition: all .2s ease;
-  margin: .15rem;
+   /* 2rem= 32px; 32px-17px(text)-1px*2(border)=13px; 13px/2=6.5px */
+  padding: 6.5px .5rem;
 }
 .Imdb >*:last-child{
   font-size: .8rem;
   width: max-content;
 }
-/* 2 rem height - 0.3rem *2 padding(up and down) =  1.4rem */
+/* 2rem height - 1px border = 31px */
 .Imdb:hover > * {
-  transform: translateY(-1.4rem);
+  transform: translateY(-31px);
 }
 @media (max-width: 900px){
   .Time{
     justify-content: center;
+  }
+  .Imdb{
+    padding: 0 3.5rem !important;
   }
 }
 

@@ -8,14 +8,14 @@
   justify-content: space-between;
   align-items: center;
   border: 1px solid transparent;
-  padding: 0.2rem 0.2rem 0.2rem 0.6rem;
+  padding: var(--main-more-filter-padding);
   transition: all 0.2s ease-out;
 }
 .UserPlusIcon {
   color: var(--main-color-2);
-  width: 1rem !important;
-  font-size: 1rem;
-  margin-right: 1.5rem;
+  width: var(--main-svg-size) !important;
+  font-size: var(--main-svg-size);
+  margin-right: var(--main-svg-margin-right);
 }
 .Input {
   width: 100%;
@@ -23,12 +23,12 @@
 }
 input[type='text'].Input {
   color: var(--main-color-6);
-  font-size: 1rem;
+  font-size: var(--main-font-size);
   font-family: var(--main-font);
   background-color: transparent;
 }
 input.Input::-webkit-input-placeholder {
-  font-size: 1rem;
+  font-size: var(--main-font-size);
   font-family: var(--main-font);
   color: var(--main-color-2);
 }
@@ -62,4 +62,12 @@ input.Input::-webkit-input-placeholder {
 }
 .ActiveIcon{
   color: var(--main-color-3) !important;
+}
+@media (max-width: 1200px){
+  input[type='text'].Input {
+    font-size: var(--main-mobile-font-size);
+  }
+  input.Input::-webkit-input-placeholder {
+    font-size: var(--main-mobile-font-size);
+  }
 }

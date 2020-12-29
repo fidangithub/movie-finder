@@ -1,14 +1,20 @@
 :root {
   --main-font: 'Poppins', sans-serif;
   --main-color-1: #f2f2f2;
-  --main-color-2: #687980;
+  --main-color-2: #7c8183;
   --main-color-3:#023447;
   --main-color-4: #0a353f;
-  --main-color-5: #001b26;
+  /* --main-color-5: #001b26; */
   --main-color-6: #132D33;
   --main-color-7: #c1d1eb;
+  --main-font-size: .875rem;
+  --main-mobile-font-size: 1rem;
+  --main-svg-size: 1rem;
+  --main-svg-margin-right: 1.2rem;
+  --main-more-filter-padding: 0.2rem 0.6rem 0.2rem 0.6rem;
 }
-
+/* #415861 */
+/* #4f5e65 */
 *,
 *::before,
 *::after{
