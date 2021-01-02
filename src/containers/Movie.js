@@ -21,7 +21,7 @@ const movie = props => {
         <React.Fragment>
             <Helmet>
                 <meta charSet="utf-8" />
-                <title>{props.movieData[0].title}</title>
+                <title>{props.filterType === "movie" ? props.movieData[0].title : props.movieData[0].name}</title>
             </Helmet>
             {lists}
         </React.Fragment>
@@ -29,6 +29,7 @@ const movie = props => {
 }
 const mapStateToProps = state => {
     return {
+        filterType: state.filter.filterType,
         movieData: state.query.movieData,
         error: state.query.error
     }
