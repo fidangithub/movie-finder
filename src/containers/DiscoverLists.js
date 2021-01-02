@@ -6,7 +6,6 @@ import { withRouter } from "react-router-dom";
 import Lists from "./../components/Lists/Lists";
 import Spinner from "./../components/Spinner/Spinner";
 import ErrorPage from "./../components/ErrorPage/ErrorPage";
-
 const discoverLists = props => {
     useEffect(() => {
         props.onFetchListsForDiscover(props.history.location);
