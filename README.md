@@ -1,4 +1,4 @@
-#TO INSTALL:
+# TO INSTALL:
 
 npm install
 npm run
