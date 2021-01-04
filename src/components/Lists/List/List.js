@@ -32,7 +32,7 @@ const list = props => {
         overviewData = overviewData.split(" ").slice(0, 40).join(" ") + " .....";
     }
     return (
-        <NavLink to={`/${props.filterType}/${props.id}`} className={classes.Card}>
+        <NavLink to={`${process.env.PUBLIC_URL}/${props.filterType}/${props.id}`} className={classes.Card}>
             {image}
             <div className={classes.CardWrapper}>
                 <div className={classes.CardWrap}></div>

@@ -38,14 +38,18 @@ const layout = props => {
                 <RightFilters />
                 <Suspense fallback={<p>Loading...</p>}>
                     <Switch>
-                        <Route path= "/" exact render={() => (<Redirect from="/" to="/discover/movie/Popular" />)} />
-                        <Route path="/discover/:id/:id" exact component={DiscoverLists} />
-                        <Route path="/filter/:id" exact component={FilterLists} />
-                        <Route path="/search/:id/:id" exact component={SearchLists} />
-                        <Route path="/movie/:id" exact component={Movie} />
-                        <Route path="/tv/:id" exact component={Movie} />
-                        <Route path="/error" component={ErrorPage} />
-                        <Redirect to="/"/>
+                        <Route path={`${process.env.PUBLIC_URL}/`} exact render={() => 
+                            (<Redirect 
+                            from={`${process.env.PUBLIC_URL}/`} 
+                            to={`${process.env.PUBLIC_URL}/discover/movie/Popular`}/>)
+                        } />
+                        <Route path={`${process.env.PUBLIC_URL}/discover/:id/:id`} exact component={DiscoverLists} />
+                        <Route path={`${process.env.PUBLIC_URL}/filter/:id`} exact component={FilterLists} />
+                        <Route path={`${process.env.PUBLIC_URL}/search/:id/:id`} exact component={SearchLists} />
+                        <Route path={`${process.env.PUBLIC_URL}/movie/:id`}exact component={Movie} />
+                        <Route path={`${process.env.PUBLIC_URL}/tv/:id`} exact component={Movie} />
+                        <Route path={`${process.env.PUBLIC_URL}/error`} component={ErrorPage} />
+                        <Redirect to={`${process.env.PUBLIC_URL}/`}/>
                     </Switch>
                 </Suspense>
             </div>
