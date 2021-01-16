@@ -77,7 +77,9 @@ const sidebar = props => {
                         <a className={classes.Link} href="https://developers.themoviedb.org/3" target="blank">
                         The Movie DB </a>
                     </p>
-                    <p className={classes.Me}>© 2020 <span>FidanSuleymanova.</span></p> 
+                    <p className={classes.Me}>© 2021 
+                        <a href="https://fidansuleymanova.com" target="blank">FidanSuleymanova.</a>
+                    </p> 
                 </div>
             </div>
         </React.Fragment>

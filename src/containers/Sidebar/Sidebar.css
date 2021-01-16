@@ -45,9 +45,11 @@
   font-size: .65rem;
   margin-bottom: .3rem;
 }
-.Me > span{
+.Me > a{
+  text-decoration: none;
   color: var(--main-color-6);
   font-weight: 700;
+  margin-left: 3px;
 }
 .Link {
   color: var(--main-color-6);
