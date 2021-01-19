@@ -100,7 +100,7 @@
     font-size: var(--main-mobile-font-size);
   }
   .GenresMain {
-    width: 15rem;
+    width: 14rem;
     display: flex;
     align-items: center;
     transition: all .2s ease-out;
